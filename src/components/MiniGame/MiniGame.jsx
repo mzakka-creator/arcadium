@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, RotateCcw, Trophy, Zap, Target, Brain, Palette, Clock } from 'lucide-react';
+import { Play, RotateCcw, Trophy, Zap, Target, Brain, Palette, Clock, Gamepad2 } from 'lucide-react';
 import { SectionHeader, Button, Card } from '../shared';
 
 /**
@@ -143,6 +143,7 @@ const NeonBlast = () => {
     } else if (gameState === 'playing' && timeLeft === 0) {
       endGame();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameState, timeLeft]);
 
   // Spawn targets during gameplay
@@ -795,13 +796,6 @@ const ReactionTime = () => {
     </div>
   );
 };
-
-// Helper component
-const Gamepad2 = ({ className }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M6 11h4M8 9v4M15 11h.01M18 11h.01M8 2h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4z" />
-  </svg>
-);
 
 export default MiniGame;
 
