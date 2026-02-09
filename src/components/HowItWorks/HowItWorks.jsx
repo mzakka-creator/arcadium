@@ -14,10 +14,10 @@ const HowItWorks = () => {
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1, once: true });
 
   const iconMap = {
-    'gamepad-2': <Gamepad2 className="w-10 h-10" />,
-    'calculator': <Calculator className="w-10 h-10" />,
-    'truck': <Truck className="w-10 h-10" />,
-    'trophy': <Trophy className="w-10 h-10" />,
+    'gamepad-2': <Gamepad2 className="w-8 h-8 sm:w-10 sm:h-10" />,
+    'calculator': <Calculator className="w-8 h-8 sm:w-10 sm:h-10" />,
+    'truck': <Truck className="w-8 h-8 sm:w-10 sm:h-10" />,
+    'trophy': <Trophy className="w-8 h-8 sm:w-10 sm:h-10" />,
   };
 
   return (
@@ -49,9 +49,9 @@ const HowItWorks = () => {
                 className="relative"
               >
                 {/* Step Number */}
-                <div className="flex justify-center mb-6">
+                <div className="flex justify-center mb-4 sm:mb-6">
                   <motion.div
-                    className="w-20 h-20 rounded-full bg-gradient-to-br from-neon-pink to-neon-cyan flex items-center justify-center shadow-lg relative"
+                    className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-neon-pink to-neon-cyan flex items-center justify-center shadow-lg relative"
                     animate={{
                       boxShadow: [
                         '0 0 20px rgba(255, 0, 110, 0.5)',
@@ -68,7 +68,7 @@ const HowItWorks = () => {
                     <div className="text-white">
                       {iconMap[step.icon]}
                     </div>
-                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-neon-pink rounded-full flex items-center justify-center text-white font-bold text-sm shadow-neon-pink">
+                    <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-6 h-6 sm:w-8 sm:h-8 bg-neon-pink rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm shadow-neon-pink">
                       {step.id}
                     </div>
                   </motion.div>
@@ -76,10 +76,10 @@ const HowItWorks = () => {
 
                 {/* Content */}
                 <div className="text-center">
-                  <h3 className="text-xl font-bold text-white mb-3">
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
                     {t(`howItWorks.steps.${step.id}.title`)}
                   </h3>
-                  <p className="text-gray-300">
+                  <p className="text-sm sm:text-base text-gray-300">
                     {t(`howItWorks.steps.${step.id}.description`)}
                   </p>
                 </div>

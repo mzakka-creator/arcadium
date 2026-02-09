@@ -26,7 +26,7 @@ const ScrollToTop = () => {
       {isVisible && (
         <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-6 left-6 z-40 w-12 h-12 bg-neon-cyan rounded-full flex items-center justify-center text-dark-navy shadow-lg hover:shadow-neon-cyan transition-all"
+          className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40 w-10 h-10 sm:w-12 sm:h-12 bg-neon-cyan rounded-full flex items-center justify-center text-dark-navy shadow-lg hover:shadow-neon-cyan transition-all"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0, opacity: 0 }}
@@ -34,7 +34,7 @@ const ScrollToTop = () => {
           whileTap={{ scale: 0.9 }}
           aria-label="Scroll to top"
         >
-          <ArrowUp className="w-6 h-6" />
+          <ArrowUp className="w-5 h-5 sm:w-6 sm:h-6" />
         </motion.button>
       )}
     </AnimatePresence>

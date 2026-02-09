@@ -76,7 +76,7 @@ const Testimonials = () => {
                   </div>
 
                   {/* Quote */}
-                  <p className="text-xl md:text-2xl text-white mb-8 italic leading-relaxed">
+                  <p className="text-lg sm:text-xl md:text-2xl text-white mb-6 sm:mb-8 italic leading-relaxed">
                     "{TESTIMONIALS[currentIndex].quote}"
                   </p>
 

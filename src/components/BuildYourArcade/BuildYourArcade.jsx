@@ -97,18 +97,19 @@ const BuildYourArcade = () => {
         </div>
 
         {/* Navigation Buttons */}
-        <div className="flex justify-between items-center mt-12">
+        <div className="flex flex-col sm:flex-row justify-between items-center mt-12 gap-4">
           <Button
             variant="ghost"
             onClick={handlePrev}
             disabled={currentStep === 1}
             icon={isRTL ? <ChevronRight /> : <ChevronLeft />}
             iconPosition={isRTL ? "right" : "left"}
+            className="w-full sm:w-auto order-2 sm:order-1"
           >
             {t('builder.previous')}
           </Button>
 
-          <div className="text-gray-400 text-sm">
+          <div className="text-gray-400 text-sm order-1 sm:order-2">
             {t('builder.stepOf', { current: currentStep, total: totalSteps })}
           </div>
 
@@ -118,6 +119,7 @@ const BuildYourArcade = () => {
               onClick={handleNext}
               icon={isRTL ? <ChevronLeft /> : <ChevronRight />}
               iconPosition={isRTL ? "left" : "right"}
+              className="w-full sm:w-auto order-3"
             >
               {t('builder.nextStep')}
             </Button>
@@ -127,6 +129,7 @@ const BuildYourArcade = () => {
               onClick={scrollToContact}
               icon={<Check />}
               iconPosition={isRTL ? "left" : "right"}
+              className="w-full sm:w-auto order-3"
             >
               {t('builder.getQuote')}
             </Button>
@@ -150,13 +153,13 @@ const StepIndicator = ({ currentStep, totalSteps }) => {
   ];
 
   return (
-    <div className="flex justify-between items-center max-w-3xl mx-auto">
+    <div className="flex justify-between items-center max-w-3xl mx-auto px-2">
       {steps.map((step, index) => (
         <React.Fragment key={step.number}>
           <div className="flex flex-col items-center">
             <motion.div
               className={`
-                w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg
+                w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-bold text-base sm:text-lg
                 ${currentStep >= step.number 
                   ? 'bg-neon-pink text-white shadow-neon-pink' 
                   : 'bg-white/10 text-gray-400'
@@ -167,14 +170,14 @@ const StepIndicator = ({ currentStep, totalSteps }) => {
                 transition: { duration: 0.5 }
               } : {}}
             >
-              {currentStep > step.number ? <Check /> : step.number}
+              {currentStep > step.number ? <Check className="w-4 h-4 sm:w-5 sm:h-5" /> : step.number}
             </motion.div>
-            <span className="text-sm text-gray-400 mt-2 hidden sm:block">
+            <span className="text-xs sm:text-sm text-gray-400 mt-2 hidden md:block text-center max-w-[80px]">
               {step.label}
             </span>
           </div>
           {index < steps.length - 1 && (
-            <div className="flex-1 h-1 mx-2 bg-white/10 relative">
+            <div className="flex-1 h-1 mx-1 sm:mx-2 bg-white/10 relative">
               <motion.div
                 className="h-full bg-neon-pink"
                 initial={{ width: 0 }}
