@@ -18,7 +18,7 @@ module.exports = {
       },
       fontFamily: {
         'heading': ['Orbitron', 'Audiowide', 'sans-serif'],
-        'body': ['Inter', 'Roboto', 'sans-serif'],
+        'body': ['Play', 'Inter', 'Roboto', 'sans-serif'],
         'arcade': ['"Press Start 2P"', 'cursive'],
       },
       boxShadow: {

@@ -1,0 +1,453 @@
+{
+  "app": {
+    "title": "ARCADIUM",
+    "loading": "Loading...",
+    "tagline": "Level Up Your Event"
+  },
+  "nav": {
+    "about": "About",
+    "games": "Games",
+    "build": "Build",
+    "howItWorks": "How It Works",
+    "gallery": "Gallery",
+    "reviews": "Reviews",
+    "getQuote": "Get Quote"
+  },
+  "hero": {
+    "title": "ARCADIUM",
+    "tagline": "Take Your Event to the Next Level",
+    "subtitle": "Mobile Arcade Game Rentals for Unforgettable Parties & Events",
+    "serviceArea": "Serving San Antonio & Surrounding Areas",
+    "buildYourArcade": "Build Your Arcade",
+    "browseGames": "Browse Games",
+    "scrollToExplore": "Scroll to Explore",
+    "stats": {
+      "games": "Arcade Games",
+      "events": "Events Hosted",
+      "rating": "Average Rating",
+      "funGuaranteed": "Fun Guaranteed"
+    }
+  },
+  "about": {
+    "title": "Why Choose Arcadium?",
+    "subtitle": "We bring the arcade to you with professional service and unforgettable entertainment",
+    "difference": "The Arcadium Difference",
+    "description1": "Founded by gaming enthusiasts, we've transformed over",
+    "events": "events",
+    "description2": "into legendary experiences since our inception.",
+    "description3": "Our passion is bringing people together through the timeless joy of arcade gaming. Whether it's a child's birthday party, corporate team-building event, or a wedding reception with a twist, we deliver entertainment that guests can't stop talking about.",
+    "description4": "Every game in our collection is",
+    "maintained": "meticulously maintained",
+    "description5": "and tested before each event. We don't just rent games - we create experiences.",
+    "stats": {
+      "gamesAvailable": "Games Available",
+      "customerSupport": "Customer Support"
+    },
+    "features": {
+      "premiumSelection": {
+        "title": "Premium Selection",
+        "description": "Curated collection of classic and modern arcade games, professionally maintained"
+      },
+      "expertSetup": {
+        "title": "Expert Setup",
+        "description": "Professional delivery, setup, and on-site support for stress-free events"
+      },
+      "instantFun": {
+        "title": "Instant Fun",
+        "description": "All games arrive fully tested and ready to play - plug and play entertainment"
+      },
+      "memorableExperiences": {
+        "title": "Memorable Experiences",
+        "description": "Create lasting memories with nostalgic and cutting-edge gaming experiences"
+      },
+      "fullyInsured": {
+        "title": "Fully Insured",
+        "description": "Complete insurance coverage and safety protocols for peace of mind"
+      },
+      "flexiblePackages": {
+        "title": "Flexible Packages",
+        "description": "Customizable options to fit any event size, theme, or budget"
+      }
+    }
+  },
+  "games": {
+    "title": "Game Collection",
+    "subtitle": "From retro classics to cutting-edge VR - we've got the perfect games for your event",
+    "categories": {
+      "all": "All Games",
+      "retro": "Retro Classics",
+      "modern": "Modern",
+      "vr": "VR Experiences",
+      "racing": "Racing"
+    },
+    "players": "Players",
+    "popular": "POPULAR",
+    "addToEvent": "Add to Event",
+    "selected": "Selected ✓",
+    "packageOptions": {
+      "title": "Package Options",
+      "subtitle": "Choose the perfect package for your event size and budget",
+      "recommended": "RECOMMENDED"
+    },
+    "buildCustom": "Build Your Custom Package",
+    "getQuote": "Get Quote",
+    "gamesList": {
+      "1": {
+        "name": "Pac-Man Arcade Machine",
+        "description": "Classic 1980s arcade cabinet with authentic joystick controls",
+        "space": "2ft x 3ft",
+        "tags": {
+          "1": "Classic",
+          "2": "Family Friendly"
+        }
+      },
+      "2": {
+        "name": "Street Fighter II",
+        "description": "The legendary fighting game that defined a generation",
+        "space": "2.5ft x 3ft",
+        "tags": {
+          "1": "Fighting",
+          "2": "Competitive"
+        }
+      },
+      "3": {
+        "name": "Dance Dance Revolution",
+        "description": "Get the party moving with this rhythm game phenomenon",
+        "space": "4ft x 6ft",
+        "tags": {
+          "1": "Dancing",
+          "2": "Party Game"
+        }
+      },
+      "4": {
+        "name": "VR Racing Simulator",
+        "description": "Immersive virtual reality racing experience",
+        "space": "6ft x 6ft",
+        "tags": {
+          "1": "VR",
+          "2": "Racing",
+          "3": "Modern"
+        }
+      },
+      "5": {
+        "name": "Mario Kart Arcade",
+        "description": "Race with your favorite Nintendo characters",
+        "space": "4ft x 4ft",
+        "tags": {
+          "1": "Racing",
+          "2": "Family Friendly"
+        }
+      }
+    }
+  },
+  "builder": {
+    "title": "Build Your Arcade",
+    "subtitle": "Customize your perfect event package in 4 easy steps",
+    "previous": "Previous",
+    "nextStep": "Next Step",
+    "getQuote": "Get Quote",
+    "stepOf": "Step {{current}} of {{total}}",
+    "steps": {
+      "eventType": "Event Type",
+      "selectGames": "Select Games",
+      "details": "Details",
+      "summary": "Summary"
+    },
+    "step1": {
+      "title": "What type of event are you planning?"
+    },
+    "step2": {
+      "title": "Select Your Games",
+      "gamesSelected": "{{count}} game selected",
+      "gamesSelected_plural": "{{count}} games selected"
+    },
+    "step3": {
+      "title": "Event Details",
+      "eventDate": "Event Date",
+      "eventDuration": "Event Duration: {{hours}} hours",
+      "hours": "hours",
+      "expectedGuests": "Expected Guests",
+      "venue": "Venue/Location",
+      "venuePlaceholder": "Enter venue address or name"
+    },
+    "step4": {
+      "title": "Your Event Summary",
+      "eventDetails": "Event Details",
+      "type": "Type",
+      "date": "Date",
+      "duration": "Duration",
+      "guests": "Guests",
+      "notSpecified": "Not specified",
+      "selectedGames": "Selected Games",
+      "noGamesSelected": "No games selected",
+      "estimatedPrice": "Estimated Price:",
+      "finalPricing": "*Final pricing will be provided in your custom quote",
+      "requestQuote": "Request Your Custom Quote"
+    }
+  },
+  "eventTypes": {
+    "birthday": "Birthday Party",
+    "corporate": "Corporate Event",
+    "wedding": "Wedding",
+    "school": "School Event",
+    "fundraiser": "Fundraiser",
+    "other": "Other"
+  },
+  "packages": {
+    "starter": {
+      "name": "Starter Pack",
+      "games": "3-4 games",
+      "duration": "3 hours",
+      "guests": "Up to 30",
+      "price": "Starting at $499",
+      "features": {
+        "1": "Delivery & setup included",
+        "2": "Mix of retro & modern games",
+        "3": "Basic on-site support",
+        "4": "Standard game rotation"
+      }
+    },
+    "premium": {
+      "name": "Premium Experience",
+      "games": "6-8 games",
+      "duration": "5 hours",
+      "guests": "Up to 75",
+      "price": "Starting at $899",
+      "features": {
+        "1": "Everything in Starter",
+        "2": "Premium game selection",
+        "3": "Dedicated attendant",
+        "4": "Custom game lineup",
+        "5": "Photo booth add-on available"
+      }
+    },
+    "ultimate": {
+      "name": "Ultimate Arcade",
+      "games": "10+ games",
+      "duration": "8 hours",
+      "guests": "100+",
+      "price": "Starting at $1,499",
+      "features": {
+        "1": "Everything in Premium",
+        "2": "VR stations included",
+        "3": "Multiple attendants",
+        "4": "Custom branding options",
+        "5": "Tournament organization",
+        "6": "Prize coordination"
+      }
+    }
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "From booking to party time - we make it easy",
+    "steps": {
+      "1": {
+        "title": "Choose Your Games",
+        "description": "Browse our collection and select games that match your event vibe"
+      },
+      "2": {
+        "title": "Get a Quote",
+        "description": "Tell us about your event and receive a custom quote within 24 hours"
+      },
+      "3": {
+        "title": "We Deliver & Setup",
+        "description": "Our team brings and sets up everything - you just enjoy the party"
+      },
+      "4": {
+        "title": "Level Up!",
+        "description": "Your event becomes legendary while we handle all the details"
+      }
+    }
+  },
+  "footer": {
+    "description": "Bringing the arcade experience to your events. Level up your celebrations with premium gaming entertainment.",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "getInTouch": "Get In Touch",
+    "links": {
+      "aboutUs": "About Us",
+      "ourGames": "Our Games",
+      "howItWorks": "How It Works",
+      "testimonials": "Testimonials",
+      "buildYourArcade": "Build Your Arcade",
+      "packageOptions": "Package Options",
+      "eventGallery": "Event Gallery",
+      "getQuote": "Get a Quote"
+    },
+    "copyright": "© {{year}} Arcadium. All rights reserved.",
+    "madeWith": "Made with",
+    "forGamers": "for gamers everywhere",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "backToTop": "Back to Top",
+    "levelUpYourEvent": "Level Up Your Event"
+  },
+  "contact": {
+    "title": "Get Your Quote",
+    "subtitle": "Ready to level up your event? Let's make it happen!",
+    "requestQuote": "Request a Quote",
+    "success": "Success!",
+    "successMessage": "We'll get back to you within 24 hours.",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "(210) 555-0199",
+      "eventDate": "Event Date",
+      "eventType": "Event Type",
+      "selectType": "Select type",
+      "expectedGuests": "Expected Guests",
+      "guestsPlaceholder": "e.g., 50",
+      "tellUs": "Tell us about your event",
+      "messagePlaceholder": "Tell us about your event, any specific games you want, or questions you have...",
+      "sending": "Sending...",
+      "requestQuoteButton": "Request Quote",
+      "required": "*"
+    },
+    "validation": {
+      "nameRequired": "Name is required",
+      "emailRequired": "Valid email is required",
+      "phoneRequired": "Valid phone number is required",
+      "dateRequired": "Event date is required",
+      "messageRequired": "Please provide more details about your event"
+    },
+    "info": {
+      "title": "Contact Information",
+      "phone": "Phone",
+      "email": "Email",
+      "serviceArea": "Service Area",
+      "hours": "Hours"
+    },
+    "whatsapp": {
+      "title": "Need Instant Help?",
+      "description": "Chat with us on WhatsApp for quick responses",
+      "button": "Chat on WhatsApp",
+      "message": "Hi! I'm interested in renting arcade games for my event."
+    }
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "subtitle": "Real stories from real events",
+    "previous": "Previous testimonial",
+    "next": "Next testimonial",
+    "goTo": "Go to testimonial {{number}}"
+  },
+  "gallery": {
+    "title": "Event Gallery",
+    "subtitle": "See Arcadium in action at real events",
+    "followUs": "Follow us on Instagram for more event highlights",
+    "close": "Close lightbox",
+    "images": {
+      "birthdayParty": "Birthday Party Setup",
+      "corporateEvent": "Corporate Event",
+      "weddingReception": "Wedding Reception",
+      "schoolFundraiser": "School Fundraiser",
+      "classicGames": "Classic Arcade Games",
+      "vrExperience": "VR Experience Station",
+      "happyGuests": "Happy Guests Playing",
+      "fullSetup": "Full Arcade Setup"
+    }
+  },
+  "miniGame": {
+    "title": "Arcade Zone",
+    "subtitle": "Try our mini-games and experience the fun at your fingertips!",
+    "backToGames": "Back to Games",
+    "playNow": "Play Now",
+    "games": {
+      "neonBlast": {
+        "name": "Neon Blast",
+        "description": "Click targets as fast as you can!"
+      },
+      "memoryMatch": {
+        "name": "Memory Match",
+        "description": "Find matching neon card pairs!"
+      },
+      "colorRush": {
+        "name": "Color Rush",
+        "description": "Click the correct colors fast!"
+      },
+      "reactionTime": {
+        "name": "Reaction Time",
+        "description": "Test your lightning reflexes!"
+      }
+    },
+    "neonBlast": {
+      "stats": "Stats",
+      "currentScore": "Current Score",
+      "highScore": "High Score",
+      "timeLeft": "Time Left",
+      "accuracy": "Accuracy",
+      "howToPlay": "How to Play",
+      "instructions": {
+        "1": "Click the glowing targets as fast as you can",
+        "2": "Targets appear for 2 seconds",
+        "3": "Different colors = different points",
+        "4": "You have 30 seconds to score!"
+      },
+      "readyToPlay": "Ready to Play?",
+      "readyDescription": "Click targets as fast as you can!",
+      "startGame": "Start Game",
+      "score": "Score",
+      "gameOver": "Game Over!",
+      "finalScore": "Final Score:",
+      "newHighScore": "🎉 New High Score! 🎉",
+      "playAgain": "Play Again",
+      "tasteOfAction": "🎮 Just a taste of the arcade action at your event! 🎮"
+    },
+    "memoryMatch": {
+      "moves": "Moves",
+      "time": "Time",
+      "matched": "Matched",
+      "title": "Memory Match",
+      "findPairs": "Find all matching pairs!",
+      "startGame": "Start Game",
+      "youWon": "You Won!",
+      "playAgain": "Play Again"
+    },
+    "colorRush": {
+      "score": "Score",
+      "time": "Time",
+      "title": "Color Rush",
+      "description": "Click the correct color as fast as you can!",
+      "startGame": "Start Game",
+      "click": "Click:",
+      "colors": {
+        "Pink": "Pink",
+        "Cyan": "Cyan",
+        "Purple": "Purple",
+        "Orange": "Orange"
+      },
+      "gameOver": "Game Over!",
+      "finalScore": "Final Score:",
+      "playAgain": "Play Again"
+    },
+    "reactionTime": {
+      "lastTime": "Last Time",
+      "bestTime": "Best Time",
+      "attempts": "Attempts",
+      "title": "Reaction Time",
+      "description": "Click when the color changes!",
+      "startTest": "Start Test",
+      "clickToBegin": "Click to Begin",
+      "wait": "Wait...",
+      "clickNow": "CLICK NOW!",
+      "feedback": {
+        "lightningFast": "🚀 Lightning fast!",
+        "greatReflexes": "⚡ Great reflexes!",
+        "goodJob": "👍 Good job!",
+        "tryFaster": "🐌 Try to be faster!"
+      },
+      "tryAgain": "Try Again",
+      "tooEarly": "Too Early!",
+      "waitForGreen": "Wait for the green color..."
+    }
+  },
+  "common": {
+    "loading": "Loading",
+    "error": "Error",
+    "success": "Success"
+  }
+}
+

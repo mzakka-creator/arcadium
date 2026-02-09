@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { SectionHeader, Card } from '../shared';
 import { TESTIMONIALS } from '../../utils/constants';
 
@@ -8,6 +9,7 @@ import { TESTIMONIALS } from '../../utils/constants';
  * Testimonials Component - Customer reviews carousel
  */
 const Testimonials = () => {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
 
@@ -34,7 +36,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" className="py-20 bg-black relative overflow-hidden">
+    <section id="testimonials" className="py-20 bg-gradient-to-b from-black to-dark-navy relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-neon-cyan/30 rounded-full blur-3xl"></div>
@@ -43,8 +45,8 @@ const Testimonials = () => {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          title="What Our Clients Say"
-          subtitle="Real stories from real events"
+          title={t('testimonials.title')}
+          subtitle={t('testimonials.subtitle')}
           alignment="center"
         />
 
@@ -99,7 +101,7 @@ const Testimonials = () => {
           <button
             onClick={handlePrev}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 w-12 h-12 bg-neon-pink rounded-full flex items-center justify-center text-white hover:shadow-neon-pink transition-all"
-            aria-label="Previous testimonial"
+            aria-label={t('testimonials.previous')}
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
@@ -107,7 +109,7 @@ const Testimonials = () => {
           <button
             onClick={handleNext}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 w-12 h-12 bg-neon-cyan rounded-full flex items-center justify-center text-dark-navy hover:shadow-neon-cyan transition-all"
-            aria-label="Next testimonial"
+            aria-label={t('testimonials.next')}
           >
             <ChevronRight className="w-6 h-6" />
           </button>
@@ -129,7 +131,7 @@ const Testimonials = () => {
                   : 'bg-white/20 hover:bg-white/40'
                 }
               `}
-              aria-label={`Go to testimonial ${index + 1}`}
+              aria-label={t('testimonials.goTo', { number: index + 1 })}
             />
           ))}
         </div>

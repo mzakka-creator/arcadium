@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@400;500;600;700&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@400;500;600;700&family=Press+Start+2P&family=Cairo:wght@400;500;600;700;800;900&family=Play:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -68,7 +68,7 @@
 /* Base Styles */
 body {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: 'Play', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #0A0E27;
@@ -124,4 +124,45 @@ body {
 /* Smooth Scroll */
 html {
   scroll-behavior: smooth;
+}
+
+/* RTL Support */
+html[dir='rtl'] {
+  direction: rtl;
+}
+
+html[dir='rtl'] body {
+  text-align: right;
+  font-family: 'Play', 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Apply Play font to all text elements in Arabic (except headings) */
+html[dir='rtl'] *:not(.font-heading):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+  font-family: 'Play', 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Keep Orbitron for heading elements even in RTL */
+html[dir='rtl'] .font-heading {
+  font-family: 'Orbitron', 'Cairo', sans-serif;
+}
+
+/* Ensure Play font is used for all body text (not headings) */
+/* This will apply to elements using font-body class and default body text */
+.font-body {
+  font-family: 'Play', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Keep Orbitron for all heading elements */
+.font-heading {
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* RTL adjustments for flex and grid layouts */
+html[dir='rtl'] .flex-row {
+  flex-direction: row-reverse;
+}
+
+html[dir='rtl'] .space-x-reverse > * + * {
+  margin-right: var(--tw-space-x-reverse);
+  margin-left: 0;
 }

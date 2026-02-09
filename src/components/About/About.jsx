@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Trophy, Users, Zap, Heart, Shield, Star } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { SectionHeader, Card } from '../shared';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 
@@ -8,43 +9,44 @@ import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
  * About Component - Why Choose Arcadium section
  */
 const About = () => {
+  const { t } = useTranslation();
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1, once: true });
 
   const features = [
     {
       icon: <Trophy className="w-8 h-8" />,
-      title: 'Premium Selection',
-      description: 'Curated collection of classic and modern arcade games, professionally maintained',
+      title: t('about.features.premiumSelection.title'),
+      description: t('about.features.premiumSelection.description'),
       color: 'neon-pink',
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: 'Expert Setup',
-      description: 'Professional delivery, setup, and on-site support for stress-free events',
+      title: t('about.features.expertSetup.title'),
+      description: t('about.features.expertSetup.description'),
       color: 'neon-cyan',
     },
     {
       icon: <Zap className="w-8 h-8" />,
-      title: 'Instant Fun',
-      description: 'All games arrive fully tested and ready to play - plug and play entertainment',
+      title: t('about.features.instantFun.title'),
+      description: t('about.features.instantFun.description'),
       color: 'neon-purple',
     },
     {
       icon: <Heart className="w-8 h-8" />,
-      title: 'Memorable Experiences',
-      description: 'Create lasting memories with nostalgic and cutting-edge gaming experiences',
+      title: t('about.features.memorableExperiences.title'),
+      description: t('about.features.memorableExperiences.description'),
       color: 'neon-orange',
     },
     {
       icon: <Shield className="w-8 h-8" />,
-      title: 'Fully Insured',
-      description: 'Complete insurance coverage and safety protocols for peace of mind',
+      title: t('about.features.fullyInsured.title'),
+      description: t('about.features.fullyInsured.description'),
       color: 'neon-pink',
     },
     {
       icon: <Star className="w-8 h-8" />,
-      title: 'Flexible Packages',
-      description: 'Customizable options to fit any event size, theme, or budget',
+      title: t('about.features.flexiblePackages.title'),
+      description: t('about.features.flexiblePackages.description'),
       color: 'neon-cyan',
     },
   ];
@@ -56,8 +58,8 @@ const About = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          title="Why Choose Arcadium?"
-          subtitle="We bring the arcade to you with professional service and unforgettable entertainment"
+          title={t('about.title')}
+          subtitle={t('about.subtitle')}
           alignment="center"
         />
 
@@ -75,22 +77,17 @@ const About = () => {
               <div className="absolute bottom-0 left-0 w-32 h-32 bg-neon-cyan/20 rounded-full blur-3xl"></div>
               
               <h3 className="text-3xl font-heading font-bold mb-6 neon-text-cyan">
-                The Arcadium Difference
+                {t('about.difference')}
               </h3>
               <div className="space-y-4 text-gray-300">
                 <p className="text-lg">
-                  Founded by gaming enthusiasts, we've transformed over <span className="text-neon-pink font-bold">500 events</span> into
-                  legendary experiences since our inception.
+                  {t('about.description1')} <span className="text-neon-pink font-bold">500 {t('about.events')}</span> {t('about.description2')}
                 </p>
                 <p className="text-lg">
-                  Our passion is bringing people together through the timeless joy of arcade gaming.
-                  Whether it's a child's birthday party, corporate team-building event, or a
-                  wedding reception with a twist, we deliver entertainment that guests can't stop
-                  talking about.
+                  {t('about.description3')}
                 </p>
                 <p className="text-lg">
-                  Every game in our collection is <span className="text-neon-cyan font-bold">meticulously maintained</span> and
-                  tested before each event. We don't just rent games - we create experiences.
+                  {t('about.description4')} <span className="text-neon-cyan font-bold">{t('about.maintained')}</span> {t('about.description5')}
                 </p>
               </div>
 
@@ -98,11 +95,11 @@ const About = () => {
               <div className="grid grid-cols-2 gap-4 mt-8">
                 <div className="text-center p-4 bg-white/5 rounded-lg">
                   <div className="text-3xl font-bold neon-text-pink">50+</div>
-                  <div className="text-sm text-gray-400">Games Available</div>
+                  <div className="text-sm text-gray-400">{t('about.stats.gamesAvailable')}</div>
                 </div>
                 <div className="text-center p-4 bg-white/5 rounded-lg">
                   <div className="text-3xl font-bold neon-text-cyan">24/7</div>
-                  <div className="text-sm text-gray-400">Customer Support</div>
+                  <div className="text-sm text-gray-400">{t('about.stats.customerSupport')}</div>
                 </div>
               </div>
             </div>

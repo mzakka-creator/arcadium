@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Gamepad2, Calculator, Truck, Trophy } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { SectionHeader } from '../shared';
 import { HOW_IT_WORKS_STEPS } from '../../utils/constants';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
@@ -9,6 +10,7 @@ import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
  * HowItWorks Component - Process timeline
  */
 const HowItWorks = () => {
+  const { t } = useTranslation();
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1, once: true });
 
   const iconMap = {
@@ -27,8 +29,8 @@ const HowItWorks = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          title="How It Works"
-          subtitle="Four simple steps to level up your event"
+          title={t('howItWorks.title')}
+          subtitle={t('howItWorks.subtitle')}
           alignment="center"
         />
 
@@ -75,10 +77,10 @@ const HowItWorks = () => {
                 {/* Content */}
                 <div className="text-center">
                   <h3 className="text-xl font-bold text-white mb-3">
-                    {step.title}
+                    {t(`howItWorks.steps.${step.id}.title`)}
                   </h3>
                   <p className="text-gray-300">
-                    {step.description}
+                    {t(`howItWorks.steps.${step.id}.description`)}
                   </p>
                 </div>
               </motion.div>

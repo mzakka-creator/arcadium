@@ -1,47 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, RotateCcw, Trophy, Zap, Target, Brain, Palette, Clock, Gamepad2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { SectionHeader, Button, Card } from '../shared';
 
 /**
  * MiniGame Component - Multiple interactive games
  */
 const MiniGame = () => {
+  const { t } = useTranslation();
   const [selectedGame, setSelectedGame] = useState(null);
 
   const games = [
     {
       id: 'neon-blast',
-      name: 'Neon Blast',
+      name: t('miniGame.games.neonBlast.name'),
       icon: <Target className="w-8 h-8" />,
-      description: 'Click targets as fast as you can!',
+      description: t('miniGame.games.neonBlast.description'),
       color: 'neon-pink',
     },
     {
       id: 'memory-match',
-      name: 'Memory Match',
+      name: t('miniGame.games.memoryMatch.name'),
       icon: <Brain className="w-8 h-8" />,
-      description: 'Find matching neon card pairs!',
+      description: t('miniGame.games.memoryMatch.description'),
       color: 'neon-cyan',
     },
     {
       id: 'color-rush',
-      name: 'Color Rush',
+      name: t('miniGame.games.colorRush.name'),
       icon: <Palette className="w-8 h-8" />,
-      description: 'Click the correct colors fast!',
+      description: t('miniGame.games.colorRush.description'),
       color: 'neon-purple',
     },
     {
       id: 'reaction-time',
-      name: 'Reaction Time',
+      name: t('miniGame.games.reactionTime.name'),
       icon: <Clock className="w-8 h-8" />,
-      description: 'Test your lightning reflexes!',
+      description: t('miniGame.games.reactionTime.description'),
       color: 'neon-orange',
     },
   ];
 
   return (
-    <section id="mini-game" className="py-20 bg-black relative overflow-hidden">
+    <section id="mini-game" className="py-20 bg-dark-navy relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-pink/30 rounded-full blur-3xl"></div>
@@ -50,8 +52,8 @@ const MiniGame = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          title="Arcade Zone"
-          subtitle="Try our mini-games and experience the fun at your fingertips!"
+          title={t('miniGame.title')}
+          subtitle={t('miniGame.subtitle')}
           alignment="center"
         />
 
@@ -64,7 +66,7 @@ const MiniGame = () => {
                 variant="ghost"
                 onClick={() => setSelectedGame(null)}
               >
-                ← Back to Games
+                ← {t('miniGame.backToGames')}
               </Button>
             </div>
             {selectedGame === 'neon-blast' && <NeonBlast />}
@@ -82,6 +84,7 @@ const MiniGame = () => {
  * Game Selector Component
  */
 const GameSelector = ({ games, onSelectGame }) => {
+  const { t } = useTranslation();
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {games.map((game, index) => (
@@ -107,7 +110,7 @@ const GameSelector = ({ games, onSelectGame }) => {
                 {game.description}
               </p>
               <Button variant="outline" size="sm" className="w-full">
-                Play Now
+                {t('miniGame.playNow')}
               </Button>
             </button>
           </Card>
@@ -121,6 +124,7 @@ const GameSelector = ({ games, onSelectGame }) => {
  * Game 1: Neon Blast
  */
 const NeonBlast = () => {
+  const { t } = useTranslation();
   const [gameState, setGameState] = useState('idle'); // idle, playing, gameOver
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
@@ -224,29 +228,29 @@ const NeonBlast = () => {
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Trophy className="w-6 h-6 text-neon-yellow" />
-                  <h3 className="text-xl font-bold text-white">Stats</h3>
+                  <h3 className="text-xl font-bold text-white">{t('miniGame.neonBlast.stats')}</h3>
                 </div>
                 
                 <div className="space-y-4">
                   <div>
-                    <p className="text-gray-400 text-sm">Current Score</p>
+                    <p className="text-gray-400 text-sm">{t('miniGame.neonBlast.currentScore')}</p>
                     <p className="text-3xl font-bold neon-text-pink">{score}</p>
                   </div>
                   
                   <div>
-                    <p className="text-gray-400 text-sm">High Score</p>
+                    <p className="text-gray-400 text-sm">{t('miniGame.neonBlast.highScore')}</p>
                     <p className="text-2xl font-bold neon-text-cyan">{highScore}</p>
                   </div>
                   
                   {gameState === 'playing' && (
                     <>
                       <div>
-                        <p className="text-gray-400 text-sm">Time Left</p>
+                        <p className="text-gray-400 text-sm">{t('miniGame.neonBlast.timeLeft')}</p>
                         <p className="text-2xl font-bold text-white">{timeLeft}s</p>
                       </div>
                       
                       <div>
-                        <p className="text-gray-400 text-sm">Accuracy</p>
+                        <p className="text-gray-400 text-sm">{t('miniGame.neonBlast.accuracy')}</p>
                         <p className="text-xl font-bold text-neon-purple">{accuracy}%</p>
                       </div>
                     </>
@@ -260,25 +264,25 @@ const NeonBlast = () => {
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Target className="w-6 h-6 text-neon-cyan" />
-                  <h3 className="text-lg font-bold text-white">How to Play</h3>
+                  <h3 className="text-lg font-bold text-white">{t('miniGame.neonBlast.howToPlay')}</h3>
                 </div>
                 
                 <ul className="space-y-2 text-gray-300 text-sm">
                   <li className="flex items-start gap-2">
                     <Zap className="w-4 h-4 text-neon-pink mt-1 flex-shrink-0" />
-                    Click the glowing targets as fast as you can
+                    {t('miniGame.neonBlast.instructions.1')}
                   </li>
                   <li className="flex items-start gap-2">
                     <Zap className="w-4 h-4 text-neon-cyan mt-1 flex-shrink-0" />
-                    Targets appear for 2 seconds
+                    {t('miniGame.neonBlast.instructions.2')}
                   </li>
                   <li className="flex items-start gap-2">
                     <Zap className="w-4 h-4 text-neon-purple mt-1 flex-shrink-0" />
-                    Different colors = different points
+                    {t('miniGame.neonBlast.instructions.3')}
                   </li>
                   <li className="flex items-start gap-2">
                     <Zap className="w-4 h-4 text-neon-orange mt-1 flex-shrink-0" />
-                    You have 30 seconds to score!
+                    {t('miniGame.neonBlast.instructions.4')}
                   </li>
                 </ul>
               </div>
@@ -302,15 +306,15 @@ const NeonBlast = () => {
                     >
                       <Gamepad2 className="w-24 h-24 text-neon-pink mb-6" />
                     </motion.div>
-                    <h3 className="text-3xl font-bold text-white mb-4">Ready to Play?</h3>
-                    <p className="text-gray-300 mb-8">Click targets as fast as you can!</p>
+                    <h3 className="text-3xl font-bold text-white mb-4">{t('miniGame.neonBlast.readyToPlay')}</h3>
+                    <p className="text-gray-300 mb-8">{t('miniGame.neonBlast.readyDescription')}</p>
                     <Button
                       variant="primary"
                       size="lg"
                       onClick={startGame}
                       icon={<Play className="w-5 h-5" />}
                     >
-                      Start Game
+                      {t('miniGame.neonBlast.startGame')}
                     </Button>
                   </div>
                 )}
@@ -331,7 +335,7 @@ const NeonBlast = () => {
                     {/* Score Display */}
                     <div className="absolute top-4 left-4 right-4 flex justify-between items-center">
                       <div className="text-2xl font-bold neon-text-pink">
-                        Score: {score}
+                        {t('miniGame.neonBlast.score')}: {score}
                       </div>
                       <div className="text-xl font-bold text-white">
                         {timeLeft}s
@@ -376,16 +380,16 @@ const NeonBlast = () => {
                     className="absolute inset-0 flex flex-col items-center justify-center"
                   >
                     <Trophy className="w-24 h-24 text-neon-yellow mb-6 animate-pulse" />
-                    <h3 className="text-4xl font-bold neon-text-cyan mb-4">Game Over!</h3>
-                    <p className="text-2xl text-white mb-2">Final Score: <span className="neon-text-pink font-bold">{score}</span></p>
-                    <p className="text-lg text-gray-300 mb-2">Accuracy: {accuracy}%</p>
+                    <h3 className="text-4xl font-bold neon-text-cyan mb-4">{t('miniGame.neonBlast.gameOver')}</h3>
+                    <p className="text-2xl text-white mb-2">{t('miniGame.neonBlast.finalScore')} <span className="neon-text-pink font-bold">{score}</span></p>
+                    <p className="text-lg text-gray-300 mb-2">{t('miniGame.neonBlast.accuracy')}: {accuracy}%</p>
                     {score > highScore && (
                       <motion.p
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         className="text-xl text-neon-yellow font-bold mb-6"
                       >
-                        🎉 New High Score! 🎉
+                        {t('miniGame.neonBlast.newHighScore')}
                       </motion.p>
                     )}
                     <Button
@@ -394,7 +398,7 @@ const NeonBlast = () => {
                       onClick={startGame}
                       icon={<RotateCcw className="w-5 h-5" />}
                     >
-                      Play Again
+                      {t('miniGame.neonBlast.playAgain')}
                     </Button>
                   </motion.div>
                 )}
@@ -409,7 +413,7 @@ const NeonBlast = () => {
               className="mt-6 text-center"
             >
               <p className="text-gray-400">
-                🎮 Just a taste of the arcade action at your event! 🎮
+                {t('miniGame.neonBlast.tasteOfAction')}
               </p>
             </motion.div>
           </div>
@@ -421,6 +425,7 @@ const NeonBlast = () => {
  * Game 2: Memory Match
  */
 const MemoryMatch = () => {
+  const { t } = useTranslation();
   const [cards, setCards] = useState([]);
   const [flipped, setFlipped] = useState([]);
   const [matched, setMatched] = useState([]);
@@ -479,15 +484,15 @@ const MemoryMatch = () => {
         <div className="p-8">
           <div className="flex justify-between items-center mb-6">
             <div>
-              <p className="text-gray-400 text-sm">Moves</p>
+              <p className="text-gray-400 text-sm">{t('miniGame.memoryMatch.moves')}</p>
               <p className="text-2xl font-bold neon-text-cyan">{moves}</p>
             </div>
             <div>
-              <p className="text-gray-400 text-sm">Time</p>
+              <p className="text-gray-400 text-sm">{t('miniGame.memoryMatch.time')}</p>
               <p className="text-2xl font-bold neon-text-pink">{time}s</p>
             </div>
             <div>
-              <p className="text-gray-400 text-sm">Matched</p>
+              <p className="text-gray-400 text-sm">{t('miniGame.memoryMatch.matched')}</p>
               <p className="text-2xl font-bold neon-text-purple">{matched.length / 2}/{symbols.length}</p>
             </div>
           </div>
@@ -496,10 +501,10 @@ const MemoryMatch = () => {
             {gameState === 'idle' && (
               <div className="text-center">
                 <Brain className="w-24 h-24 text-neon-cyan mx-auto mb-6" />
-                <h3 className="text-2xl font-bold text-white mb-4">Memory Match</h3>
-                <p className="text-gray-300 mb-8">Find all matching pairs!</p>
+                <h3 className="text-2xl font-bold text-white mb-4">{t('miniGame.memoryMatch.title')}</h3>
+                <p className="text-gray-300 mb-8">{t('miniGame.memoryMatch.findPairs')}</p>
                 <Button variant="primary" size="lg" onClick={startGame}>
-                  Start Game
+                  {t('miniGame.memoryMatch.startGame')}
                 </Button>
               </div>
             )}
@@ -531,11 +536,11 @@ const MemoryMatch = () => {
                 className="text-center"
               >
                 <Trophy className="w-24 h-24 text-neon-yellow mx-auto mb-6" />
-                <h3 className="text-3xl font-bold neon-text-cyan mb-4">You Won!</h3>
-                <p className="text-xl text-white mb-2">Time: {time}s</p>
-                <p className="text-xl text-white mb-8">Moves: {moves}</p>
+                <h3 className="text-3xl font-bold neon-text-cyan mb-4">{t('miniGame.memoryMatch.youWon')}</h3>
+                <p className="text-xl text-white mb-2">{t('miniGame.memoryMatch.time')}: {time}s</p>
+                <p className="text-xl text-white mb-8">{t('miniGame.memoryMatch.moves')}: {moves}</p>
                 <Button variant="primary" size="lg" onClick={startGame}>
-                  Play Again
+                  {t('miniGame.memoryMatch.playAgain')}
                 </Button>
               </motion.div>
             )}
@@ -550,6 +555,7 @@ const MemoryMatch = () => {
  * Game 3: Color Rush
  */
 const ColorRush = () => {
+  const { t } = useTranslation();
   const [gameState, setGameState] = useState('idle');
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(20);
@@ -600,12 +606,12 @@ const ColorRush = () => {
         <div className="p-8 text-center">
           <div className="flex justify-around mb-8">
             <div>
-              <p className="text-gray-400 text-sm">Score</p>
+              <p className="text-gray-400 text-sm">{t('miniGame.colorRush.score')}</p>
               <p className="text-3xl font-bold neon-text-pink">{score}</p>
             </div>
             {gameState === 'playing' && (
               <div>
-                <p className="text-gray-400 text-sm">Time</p>
+                <p className="text-gray-400 text-sm">{t('miniGame.colorRush.time')}</p>
                 <p className="text-3xl font-bold neon-text-cyan">{timeLeft}s</p>
               </div>
             )}
@@ -615,10 +621,10 @@ const ColorRush = () => {
             {gameState === 'idle' && (
               <div>
                 <Palette className="w-24 h-24 text-neon-purple mx-auto mb-6" />
-                <h3 className="text-2xl font-bold text-white mb-4">Color Rush</h3>
-                <p className="text-gray-300 mb-8">Click the correct color as fast as you can!</p>
+                <h3 className="text-2xl font-bold text-white mb-4">{t('miniGame.colorRush.title')}</h3>
+                <p className="text-gray-300 mb-8">{t('miniGame.colorRush.description')}</p>
                 <Button variant="primary" size="lg" onClick={startGame}>
-                  Start Game
+                  {t('miniGame.colorRush.startGame')}
                 </Button>
               </div>
             )}
@@ -626,7 +632,7 @@ const ColorRush = () => {
             {gameState === 'playing' && (
               <div className="w-full">
                 <h3 className="text-3xl font-bold text-white mb-8">
-                  Click: <span className={colors.find(c => c.name === targetColor)?.text}>{targetColor}</span>
+                  {t('miniGame.colorRush.click')} <span className={colors.find(c => c.name === targetColor)?.text}>{t(`miniGame.colorRush.colors.${targetColor}`)}</span>
                 </h3>
                 <div className="grid grid-cols-2 gap-6">
                   {options.map((color) => (
@@ -637,7 +643,7 @@ const ColorRush = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      {color.name}
+                      {t(`miniGame.colorRush.colors.${color.name}`)}
                     </motion.button>
                   ))}
                 </div>
@@ -650,10 +656,10 @@ const ColorRush = () => {
                 animate={{ scale: 1, opacity: 1 }}
               >
                 <Trophy className="w-24 h-24 text-neon-yellow mx-auto mb-6" />
-                <h3 className="text-3xl font-bold neon-text-purple mb-4">Game Over!</h3>
-                <p className="text-2xl text-white mb-8">Final Score: <span className="neon-text-pink font-bold">{score}</span></p>
+                <h3 className="text-3xl font-bold neon-text-purple mb-4">{t('miniGame.colorRush.gameOver')}</h3>
+                <p className="text-2xl text-white mb-8">{t('miniGame.colorRush.finalScore')} <span className="neon-text-pink font-bold">{score}</span></p>
                 <Button variant="primary" size="lg" onClick={startGame}>
-                  Play Again
+                  {t('miniGame.colorRush.playAgain')}
                 </Button>
               </motion.div>
             )}
@@ -668,6 +674,7 @@ const ColorRush = () => {
  * Game 4: Reaction Time
  */
 const ReactionTime = () => {
+  const { t } = useTranslation();
   const [gameState, setGameState] = useState('idle');
   const [waiting, setWaiting] = useState(false);
   const [reactionTime, setReactionTime] = useState(null);
@@ -713,19 +720,19 @@ const ReactionTime = () => {
           <div className="flex justify-around mb-8 text-center">
             {reactionTime && (
               <div>
-                <p className="text-gray-400 text-sm">Last Time</p>
+                <p className="text-gray-400 text-sm">{t('miniGame.reactionTime.lastTime')}</p>
                 <p className="text-3xl font-bold neon-text-cyan">{reactionTime}ms</p>
               </div>
             )}
             {bestTime && (
               <div>
-                <p className="text-gray-400 text-sm">Best Time</p>
+                <p className="text-gray-400 text-sm">{t('miniGame.reactionTime.bestTime')}</p>
                 <p className="text-3xl font-bold neon-text-pink">{bestTime}ms</p>
               </div>
             )}
             {attempts > 0 && (
               <div>
-                <p className="text-gray-400 text-sm">Attempts</p>
+                <p className="text-gray-400 text-sm">{t('miniGame.reactionTime.attempts')}</p>
                 <p className="text-3xl font-bold neon-text-purple">{attempts}</p>
               </div>
             )}
@@ -735,10 +742,10 @@ const ReactionTime = () => {
             {gameState === 'idle' && (
               <div className="text-center">
                 <Clock className="w-24 h-24 text-neon-orange mx-auto mb-6" />
-                <h3 className="text-2xl font-bold text-white mb-4">Reaction Time</h3>
-                <p className="text-gray-300 mb-8">Click when the color changes!</p>
+                <h3 className="text-2xl font-bold text-white mb-4">{t('miniGame.reactionTime.title')}</h3>
+                <p className="text-gray-300 mb-8">{t('miniGame.reactionTime.description')}</p>
                 <Button variant="primary" size="lg" onClick={startGame}>
-                  Start Test
+                  {t('miniGame.reactionTime.startTest')}
                 </Button>
               </div>
             )}
@@ -747,7 +754,7 @@ const ReactionTime = () => {
               <div className="text-center w-full">
                 {!startTime && !waiting && !reactionTime && (
                   <Button variant="primary" size="lg" onClick={startRound}>
-                    Click to Begin
+                    {t('miniGame.reactionTime.clickToBegin')}
                   </Button>
                 )}
                 {waiting && (
@@ -755,7 +762,7 @@ const ReactionTime = () => {
                     className="w-full h-64 bg-red-600 rounded-xl flex items-center justify-center cursor-pointer"
                     onClick={handleClick}
                   >
-                    <p className="text-3xl font-bold text-white">Wait...</p>
+                    <p className="text-3xl font-bold text-white">{t('miniGame.reactionTime.wait')}</p>
                   </motion.div>
                 )}
                 {startTime && (
@@ -765,19 +772,19 @@ const ReactionTime = () => {
                     className="w-full h-64 bg-neon-green rounded-xl flex items-center justify-center cursor-pointer shadow-neon-green"
                     onClick={handleClick}
                   >
-                    <p className="text-4xl font-bold text-dark-navy">CLICK NOW!</p>
+                    <p className="text-4xl font-bold text-dark-navy">{t('miniGame.reactionTime.clickNow')}</p>
                   </motion.div>
                 )}
                 {reactionTime && (
                   <div className="text-center">
                     <p className="text-2xl text-gray-300 mb-6">
-                      {reactionTime < 200 ? '🚀 Lightning fast!' :
-                       reactionTime < 300 ? '⚡ Great reflexes!' :
-                       reactionTime < 400 ? '👍 Good job!' :
-                       '🐌 Try to be faster!'}
+                      {reactionTime < 200 ? t('miniGame.reactionTime.feedback.lightningFast') :
+                       reactionTime < 300 ? t('miniGame.reactionTime.feedback.greatReflexes') :
+                       reactionTime < 400 ? t('miniGame.reactionTime.feedback.goodJob') :
+                       t('miniGame.reactionTime.feedback.tryFaster')}
                     </p>
                     <Button variant="primary" onClick={startRound}>
-                      Try Again
+                      {t('miniGame.reactionTime.tryAgain')}
                     </Button>
                   </div>
                 )}
@@ -786,8 +793,8 @@ const ReactionTime = () => {
 
             {gameState === 'tooEarly' && (
               <div className="text-center">
-                <p className="text-3xl font-bold text-red-500 mb-4">Too Early!</p>
-                <p className="text-gray-300">Wait for the green color...</p>
+                <p className="text-3xl font-bold text-red-500 mb-4">{t('miniGame.reactionTime.tooEarly')}</p>
+                <p className="text-gray-300">{t('miniGame.reactionTime.waitForGreen')}</p>
               </div>
             )}
           </div>

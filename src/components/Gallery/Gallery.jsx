@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Instagram, ExternalLink } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { SectionHeader, Button } from '../shared';
 import { CONTACT_INFO } from '../../utils/constants';
 
@@ -8,19 +9,20 @@ import { CONTACT_INFO } from '../../utils/constants';
  * Gallery Component - Photo gallery with lightbox
  */
 const Gallery = () => {
+  const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   // Placeholder images - replace with actual event photos
   const images = [
-    { id: 1, title: 'Birthday Party Setup', category: 'birthday' },
-    { id: 2, title: 'Corporate Event', category: 'corporate' },
-    { id: 3, title: 'Wedding Reception', category: 'wedding' },
-    { id: 4, title: 'School Fundraiser', category: 'school' },
-    { id: 5, title: 'Classic Arcade Games', category: 'games' },
-    { id: 6, title: 'VR Experience Station', category: 'games' },
-    { id: 7, title: 'Happy Guests Playing', category: 'people' },
-    { id: 8, title: 'Full Arcade Setup', category: 'setup' },
+    { id: 1, titleKey: 'birthdayParty', title: t('gallery.images.birthdayParty'), category: 'birthday' },
+    { id: 2, titleKey: 'corporateEvent', title: t('gallery.images.corporateEvent'), category: 'corporate' },
+    { id: 3, titleKey: 'weddingReception', title: t('gallery.images.weddingReception'), category: 'wedding' },
+    { id: 4, titleKey: 'schoolFundraiser', title: t('gallery.images.schoolFundraiser'), category: 'school' },
+    { id: 5, titleKey: 'classicGames', title: t('gallery.images.classicGames'), category: 'games' },
+    { id: 6, titleKey: 'vrExperience', title: t('gallery.images.vrExperience'), category: 'games' },
+    { id: 7, titleKey: 'happyGuests', title: t('gallery.images.happyGuests'), category: 'people' },
+    { id: 8, titleKey: 'fullSetup', title: t('gallery.images.fullSetup'), category: 'setup' },
   ];
 
   const openLightbox = (image) => {
@@ -40,8 +42,8 @@ const Gallery = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          title="Event Gallery"
-          subtitle="See Arcadium in action at real events"
+          title={t('gallery.title')}
+          subtitle={t('gallery.subtitle')}
           alignment="center"
         />
 
@@ -84,7 +86,7 @@ const Gallery = () => {
           className="text-center"
         >
           <p className="text-gray-300 mb-4">
-            Follow us on Instagram for more event highlights
+            {t('gallery.followUs')}
           </p>
           <Button
             variant="secondary"
@@ -109,7 +111,7 @@ const Gallery = () => {
             <button
               onClick={closeLightbox}
               className="absolute top-4 right-4 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors"
-              aria-label="Close lightbox"
+              aria-label={t('gallery.close')}
             >
               <X className="w-6 h-6" />
             </button>

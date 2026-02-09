@@ -24,7 +24,7 @@ const SectionHeader = ({
     right: 'text-right',
   };
 
-  const containerClasses = `${alignmentClasses[alignment]} mb-12 ${className}`;
+  const containerClasses = `${alignmentClasses[alignment]} mt-12 mb-12 ${className}`;
 
   const AnimatedDiv = animated ? motion.div : 'div';
   const AnimatedH2 = animated ? motion.h2 : 'h2';

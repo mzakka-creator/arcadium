@@ -1,12 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Mail, Phone, MapPin, Heart } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { CONTACT_INFO } from '../../utils/constants';
+import logoImage from '../../assets/logo.png';
 
 /**
  * Footer Component
  */
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   const scrollToSection = (sectionId) => {
@@ -29,11 +32,15 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Brand Column */}
           <div>
-            <h3 className="text-3xl font-heading font-bold neon-text-pink mb-4">
-              ARCADIUM
-            </h3>
+            <div className="mb-4">
+              <img 
+                src={logoImage} 
+                alt="Arcadium Logo" 
+                className="h-12 w-auto object-contain"
+              />
+            </div>
             <p className="text-gray-400 mb-4">
-              Bringing the arcade experience to your events. Level up your celebrations with premium gaming entertainment.
+              {t('footer.description')}
             </p>
             <div className="flex gap-4">
               <SocialLink 
@@ -51,29 +58,29 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-bold text-lg mb-4">Quick Links</h4>
+            <h4 className="text-white font-bold text-lg mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-2">
-              <FooterLink onClick={() => scrollToSection('about')}>About Us</FooterLink>
-              <FooterLink onClick={() => scrollToSection('games')}>Our Games</FooterLink>
-              <FooterLink onClick={() => scrollToSection('how-it-works')}>How It Works</FooterLink>
-              <FooterLink onClick={() => scrollToSection('testimonials')}>Testimonials</FooterLink>
+              <FooterLink onClick={() => scrollToSection('about')}>{t('footer.links.aboutUs')}</FooterLink>
+              <FooterLink onClick={() => scrollToSection('games')}>{t('footer.links.ourGames')}</FooterLink>
+              <FooterLink onClick={() => scrollToSection('how-it-works')}>{t('footer.links.howItWorks')}</FooterLink>
+              <FooterLink onClick={() => scrollToSection('testimonials')}>{t('footer.links.testimonials')}</FooterLink>
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="text-white font-bold text-lg mb-4">Services</h4>
+            <h4 className="text-white font-bold text-lg mb-4">{t('footer.services')}</h4>
             <ul className="space-y-2">
-              <FooterLink onClick={() => scrollToSection('builder')}>Build Your Arcade</FooterLink>
-              <FooterLink onClick={() => scrollToSection('games')}>Package Options</FooterLink>
-              <FooterLink onClick={() => scrollToSection('gallery')}>Event Gallery</FooterLink>
-              <FooterLink onClick={() => scrollToSection('contact')}>Get a Quote</FooterLink>
+              <FooterLink onClick={() => scrollToSection('builder')}>{t('footer.links.buildYourArcade')}</FooterLink>
+              <FooterLink onClick={() => scrollToSection('games')}>{t('footer.links.packageOptions')}</FooterLink>
+              <FooterLink onClick={() => scrollToSection('gallery')}>{t('footer.links.eventGallery')}</FooterLink>
+              <FooterLink onClick={() => scrollToSection('contact')}>{t('footer.links.getQuote')}</FooterLink>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-white font-bold text-lg mb-4">Get In Touch</h4>
+            <h4 className="text-white font-bold text-lg mb-4">{t('footer.getInTouch')}</h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-gray-400">
                 <Phone className="w-4 h-4 text-neon-pink" />
@@ -101,22 +108,22 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm text-center md:text-left">
-            © {currentYear} Arcadium. All rights reserved.
+            {t('footer.copyright', { year: currentYear })}
           </p>
           
           <div className="flex items-center gap-1 text-gray-400 text-sm">
-            <span>Made with</span>
+            <span>{t('footer.madeWith')}</span>
             <Heart className="w-4 h-4 text-neon-pink fill-neon-pink animate-pulse" />
-            <span>for gamers everywhere</span>
+            <span>{t('footer.forGamers')}</span>
           </div>
 
           <div className="flex gap-4 text-sm">
             <button onClick={() => {}} className="text-gray-400 hover:text-white transition-colors">
-              Privacy Policy
+              {t('footer.privacyPolicy')}
             </button>
             <span className="text-gray-600">|</span>
             <button onClick={() => {}} className="text-gray-400 hover:text-white transition-colors">
-              Terms of Service
+              {t('footer.termsOfService')}
             </button>
           </div>
         </div>
@@ -127,7 +134,7 @@ const Footer = () => {
           className="mt-8 mx-auto flex items-center gap-2 text-neon-cyan hover:text-neon-pink transition-colors"
           whileHover={{ y: -5 }}
         >
-          <span className="text-sm">Back to Top</span>
+          <span className="text-sm">{t('footer.backToTop')}</span>
           <span className="text-xl">↑</span>
         </motion.button>
       </div>

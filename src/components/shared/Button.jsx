@@ -12,6 +12,7 @@ import { motion } from 'framer-motion';
  * @param {boolean} isLoading - Loading state
  * @param {boolean} disabled - Disabled state
  * @param {string} icon - Icon component (optional)
+ * @param {string} iconPosition - Icon position (left, right)
  */
 const Button = ({ 
   variant = 'primary', 
@@ -23,6 +24,7 @@ const Button = ({
   isLoading = false,
   disabled = false,
   icon = null,
+  iconPosition = 'left',
   ...props 
 }) => {
   const baseClasses = 'inline-flex items-center justify-center font-bold transition-all duration-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-navy';
@@ -59,8 +61,9 @@ const Button = ({
           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
         </svg>
       )}
-      {icon && !isLoading && <span className="mr-2">{icon}</span>}
+      {icon && !isLoading && iconPosition === 'left' && <span className="mr-2">{icon}</span>}
       {children}
+      {icon && !isLoading && iconPosition === 'right' && <span className="ml-2">{icon}</span>}
     </>
   );
 

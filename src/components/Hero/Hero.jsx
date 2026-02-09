@@ -1,13 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, Gamepad2, Sparkles } from 'lucide-react';
+import { ChevronDown, Sparkles } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import Button from '../shared/Button';
+import logoImage from '../../assets/logo.png';
 import './Hero.css';
 
 /**
  * Hero Component - Full-screen landing section with animated elements
  */
 const Hero = () => {
+  const { t } = useTranslation();
+  
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -55,15 +59,12 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="mb-8"
         >
-          <h1 className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold neon-text-pink tracking-wider mt-12 mb-4">
-            ARCADIUM
-          </h1>
           <motion.div
             animate={{
-              textShadow: [
-                '0 0 10px rgba(255, 0, 110, 0.8)',
-                '0 0 20px rgba(255, 0, 110, 1)',
-                '0 0 10px rgba(255, 0, 110, 0.8)',
+              filter: [
+                'drop-shadow(0 0 10px rgba(255, 0, 110, 0.8))',
+                'drop-shadow(0 0 20px rgba(255, 0, 110, 1))',
+                'drop-shadow(0 0 10px rgba(255, 0, 110, 0.8))',
               ],
             }}
             transition={{
@@ -71,9 +72,13 @@ const Hero = () => {
               repeat: Infinity,
               ease: 'easeInOut',
             }}
-            className="inline-block"
+            className="inline-block mt-12 mb-4"
           >
-            <Gamepad2 className="w-16 h-16 sm:w-20 sm:h-20 text-neon-cyan mx-auto" />
+            <img 
+              src={logoImage} 
+              alt="Arcadium Logo" 
+              className="h-24 sm:h-32 md:h-40 lg:h-48 w-auto object-contain mx-auto"
+            />
           </motion.div>
         </motion.div>
 
@@ -84,7 +89,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-body font-light text-white mb-6"
         >
-          Level Up Your Event
+          {t('hero.tagline')}
         </motion.h2>
 
         {/* Subtitle */}
@@ -94,7 +99,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-4 max-w-3xl mx-auto"
         >
-          Mobile Arcade Game Rentals for Unforgettable Parties & Events
+          {t('hero.subtitle')}
         </motion.p>
 
         <motion.p
@@ -104,7 +109,7 @@ const Hero = () => {
           className="text-md sm:text-lg text-neon-cyan font-semibold mb-12 flex items-center justify-center gap-2"
         >
           <Sparkles className="w-5 h-5" />
-          Serving San Antonio & Surrounding Areas
+          {t('hero.serviceArea')}
           <Sparkles className="w-5 h-5" />
         </motion.p>
 
@@ -120,14 +125,14 @@ const Hero = () => {
             size="lg"
             onClick={() => scrollToSection('builder')}
           >
-            Build Your Arcade
+            {t('hero.buildYourArcade')}
           </Button>
           <Button
             variant="outline"
             size="lg"
             onClick={() => scrollToSection('games')}
           >
-            Browse Games
+            {t('hero.browseGames')}
           </Button>
         </motion.div>
 
@@ -139,10 +144,10 @@ const Hero = () => {
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
         >
           {[
-            { number: '50+', label: 'Arcade Games' },
-            { number: '500+', label: 'Events Hosted' },
-            { number: '5★', label: 'Average Rating' },
-            { number: '100%', label: 'Fun Guaranteed' },
+            { number: '6+', label: t('hero.stats.games') },
+            { number: '10+', label: t('hero.stats.events') },
+            { number: '5★', label: t('hero.stats.rating') },
+            { number: '100%', label: t('hero.stats.funGuaranteed') },
           ].map((stat, index) => (
             <motion.div
               key={index}
@@ -174,7 +179,7 @@ const Hero = () => {
             transition={{ duration: 1.5, repeat: Infinity }}
             className="flex flex-col items-center text-neon-cyan hover:text-neon-pink transition-colors cursor-pointer bg-transparent border-none"
           >
-            <span className="text-sm mb-2 font-body">Scroll to Explore</span>
+            <span className="text-sm mb-2 font-body">{t('hero.scrollToExplore')}</span>
             <ChevronDown className="w-8 h-8" />
           </motion.button>
         </motion.div>

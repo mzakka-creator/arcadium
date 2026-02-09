@@ -4,6 +4,7 @@ import {
   Cake, Briefcase, Heart, GraduationCap, DollarSign, Star,
   ChevronLeft, ChevronRight, Check, Calendar, Users as UsersIcon
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { SectionHeader, Button, Card } from '../shared';
 import { useEvent } from '../../context/EventContext';
 import { EVENT_TYPES, GAMES } from '../../utils/constants';
@@ -13,6 +14,7 @@ import { calculateEstimate, formatPrice } from '../../utils/helpers';
  * BuildYourArcade Component - Multi-step event builder
  */
 const BuildYourArcade = () => {
+  const { t, i18n } = useTranslation();
   const [currentStep, setCurrentStep] = useState(1);
   const { 
     selectedGames, 
@@ -20,6 +22,8 @@ const BuildYourArcade = () => {
     updateEventDetails, 
     toggleGame 
   } = useEvent();
+  
+  const isRTL = i18n.language === 'ar';
 
   const totalSteps = 4;
 
@@ -49,8 +53,8 @@ const BuildYourArcade = () => {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          title="Build Your Arcade"
-          subtitle="Customize your perfect event package in 4 easy steps"
+          title={t('builder.title')}
+          subtitle={t('builder.subtitle')}
           alignment="center"
         />
 
@@ -98,30 +102,33 @@ const BuildYourArcade = () => {
             variant="ghost"
             onClick={handlePrev}
             disabled={currentStep === 1}
-            icon={<ChevronLeft />}
+            icon={isRTL ? <ChevronRight /> : <ChevronLeft />}
+            iconPosition={isRTL ? "right" : "left"}
           >
-            Previous
+            {t('builder.previous')}
           </Button>
 
           <div className="text-gray-400 text-sm">
-            Step {currentStep} of {totalSteps}
+            {t('builder.stepOf', { current: currentStep, total: totalSteps })}
           </div>
 
           {currentStep < totalSteps ? (
             <Button
               variant="primary"
               onClick={handleNext}
-              icon={<ChevronRight />}
+              icon={isRTL ? <ChevronLeft /> : <ChevronRight />}
+              iconPosition={isRTL ? "left" : "right"}
             >
-              Next Step
+              {t('builder.nextStep')}
             </Button>
           ) : (
             <Button
               variant="primary"
               onClick={scrollToContact}
               icon={<Check />}
+              iconPosition={isRTL ? "left" : "right"}
             >
-              Get Quote
+              {t('builder.getQuote')}
             </Button>
           )}
         </div>
@@ -134,11 +141,12 @@ const BuildYourArcade = () => {
  * Progress Indicator Component
  */
 const StepIndicator = ({ currentStep, totalSteps }) => {
+  const { t } = useTranslation();
   const steps = [
-    { number: 1, label: 'Event Type' },
-    { number: 2, label: 'Select Games' },
-    { number: 3, label: 'Details' },
-    { number: 4, label: 'Summary' },
+    { number: 1, label: t('builder.steps.eventType') },
+    { number: 2, label: t('builder.steps.selectGames') },
+    { number: 3, label: t('builder.steps.details') },
+    { number: 4, label: t('builder.steps.summary') },
   ];
 
   return (
@@ -187,6 +195,7 @@ const StepIndicator = ({ currentStep, totalSteps }) => {
  * Step 1: Event Type Selection
  */
 const Step1EventType = ({ eventDetails, updateEventDetails }) => {
+  const { t } = useTranslation();
   const iconMap = {
     cake: <Cake className="w-8 h-8" />,
     briefcase: <Briefcase className="w-8 h-8" />,
@@ -204,7 +213,7 @@ const Step1EventType = ({ eventDetails, updateEventDetails }) => {
       transition={{ duration: 0.3 }}
     >
       <h3 className="text-2xl font-bold text-center text-white mb-8">
-        What type of event are you planning?
+        {t('builder.step1.title')}
       </h3>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {EVENT_TYPES.map((type) => (
@@ -228,7 +237,7 @@ const Step1EventType = ({ eventDetails, updateEventDetails }) => {
               {iconMap[type.icon]}
             </div>
             <div className="text-lg font-semibold text-white">
-              {type.label}
+              {t(`eventTypes.${type.id}`)}
             </div>
           </motion.button>
         ))}
@@ -241,6 +250,9 @@ const Step1EventType = ({ eventDetails, updateEventDetails }) => {
  * Step 2: Game Selection
  */
 const Step2GameSelection = ({ selectedGames, toggleGame }) => {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
+  
   return (
     <motion.div
       initial={{ opacity: 0, x: 50 }}
@@ -249,10 +261,10 @@ const Step2GameSelection = ({ selectedGames, toggleGame }) => {
       transition={{ duration: 0.3 }}
     >
       <h3 className="text-2xl font-bold text-center text-white mb-4">
-        Select Your Games
+        {t('builder.step2.title')}
       </h3>
       <p className="text-center text-gray-400 mb-8">
-        {selectedGames.length} game{selectedGames.length !== 1 ? 's' : ''} selected
+        {t('builder.step2.gamesSelected', { count: selectedGames.length })}
       </p>
       
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[500px] overflow-y-auto pr-2">
@@ -263,7 +275,8 @@ const Step2GameSelection = ({ selectedGames, toggleGame }) => {
               key={game.id}
               onClick={() => toggleGame(game)}
               className={`
-                p-4 rounded-xl border-2 text-left transition-all duration-300
+                p-4 rounded-xl border-2 transition-all duration-300
+                ${isRTL ? 'text-right' : 'text-left'}
                 ${isSelected
                   ? 'border-neon-cyan bg-neon-cyan/10 shadow-neon-cyan'
                   : 'border-white/10 bg-white/5 hover:border-neon-pink'
@@ -278,10 +291,10 @@ const Step2GameSelection = ({ selectedGames, toggleGame }) => {
                 )}
               </div>
               <h4 className="font-bold text-white text-sm mb-1">
-                {game.name}
+                {t(`games.gamesList.${game.id}.name`)}
               </h4>
               <p className="text-xs text-gray-400">
-                {game.specs.players} Players
+                {game.specs.players} {t('games.players')}
               </p>
             </motion.button>
           );
@@ -295,6 +308,7 @@ const Step2GameSelection = ({ selectedGames, toggleGame }) => {
  * Step 3: Event Details
  */
 const Step3EventDetails = ({ eventDetails, updateEventDetails }) => {
+  const { t } = useTranslation();
   return (
     <motion.div
       initial={{ opacity: 0, x: 50 }}
@@ -304,7 +318,7 @@ const Step3EventDetails = ({ eventDetails, updateEventDetails }) => {
       className="max-w-2xl mx-auto"
     >
       <h3 className="text-2xl font-bold text-center text-white mb-8">
-        Event Details
+        {t('builder.step3.title')}
       </h3>
 
       <Card variant="glass">
@@ -313,7 +327,7 @@ const Step3EventDetails = ({ eventDetails, updateEventDetails }) => {
           <div>
             <label className="block text-white font-semibold mb-2 flex items-center gap-2">
               <Calendar className="w-5 h-5 text-neon-pink" />
-              Event Date
+              {t('builder.step3.eventDate')}
             </label>
             <input
               type="date"
@@ -326,7 +340,7 @@ const Step3EventDetails = ({ eventDetails, updateEventDetails }) => {
           {/* Duration */}
           <div>
             <label className="block text-white font-semibold mb-2">
-              Event Duration: {eventDetails.duration} hours
+              {t('builder.step3.eventDuration', { hours: eventDetails.duration })}
             </label>
             <input
               type="range"
@@ -337,8 +351,8 @@ const Step3EventDetails = ({ eventDetails, updateEventDetails }) => {
               className="w-full accent-neon-pink"
             />
             <div className="flex justify-between text-sm text-gray-400 mt-1">
-              <span>2 hours</span>
-              <span>12 hours</span>
+              <span>2 {t('builder.step3.hours')}</span>
+              <span>12 {t('builder.step3.hours')}</span>
             </div>
           </div>
 
@@ -346,7 +360,7 @@ const Step3EventDetails = ({ eventDetails, updateEventDetails }) => {
           <div>
             <label className="block text-white font-semibold mb-2 flex items-center gap-2">
               <UsersIcon className="w-5 h-5 text-neon-cyan" />
-              Expected Guests
+              {t('builder.step3.expectedGuests')}
             </label>
             <input
               type="number"
@@ -362,14 +376,14 @@ const Step3EventDetails = ({ eventDetails, updateEventDetails }) => {
           {/* Venue */}
           <div>
             <label className="block text-white font-semibold mb-2">
-              Venue/Location
+              {t('builder.step3.venue')}
             </label>
             <input
               type="text"
               value={eventDetails.venue}
               onChange={(e) => updateEventDetails({ venue: e.target.value })}
               className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:border-neon-cyan focus:outline-none"
-              placeholder="Enter venue address or name"
+              placeholder={t('builder.step3.venuePlaceholder')}
             />
           </div>
         </div>
@@ -382,6 +396,7 @@ const Step3EventDetails = ({ eventDetails, updateEventDetails }) => {
  * Step 4: Summary
  */
 const Step4Summary = ({ selectedGames, eventDetails, scrollToContact }) => {
+  const { t } = useTranslation();
   const estimate = calculateEstimate(
     selectedGames,
     eventDetails.duration,
@@ -397,7 +412,7 @@ const Step4Summary = ({ selectedGames, eventDetails, scrollToContact }) => {
       className="max-w-3xl mx-auto"
     >
       <h3 className="text-2xl font-bold text-center text-white mb-8">
-        Your Event Summary
+        {t('builder.step4.title')}
       </h3>
 
       <Card variant="glass">
@@ -405,28 +420,28 @@ const Step4Summary = ({ selectedGames, eventDetails, scrollToContact }) => {
           {/* Event Details Summary */}
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div>
-              <h4 className="text-neon-cyan font-semibold mb-4">Event Details</h4>
+              <h4 className="text-neon-cyan font-semibold mb-4">{t('builder.step4.eventDetails')}</h4>
               <div className="space-y-2 text-gray-300">
-                <p><span className="text-white font-semibold">Type:</span> {eventDetails.eventType || 'Not specified'}</p>
-                <p><span className="text-white font-semibold">Date:</span> {eventDetails.date || 'Not specified'}</p>
-                <p><span className="text-white font-semibold">Duration:</span> {eventDetails.duration} hours</p>
-                <p><span className="text-white font-semibold">Guests:</span> {eventDetails.guestCount}</p>
-                <p><span className="text-white font-semibold">Venue:</span> {eventDetails.venue || 'Not specified'}</p>
+                <p><span className="text-white font-semibold">{t('builder.step4.type')}:</span> {eventDetails.eventType ? t(`eventTypes.${eventDetails.eventType}`) : t('builder.step4.notSpecified')}</p>
+                <p><span className="text-white font-semibold">{t('builder.step4.date')}:</span> {eventDetails.date || t('builder.step4.notSpecified')}</p>
+                <p><span className="text-white font-semibold">{t('builder.step4.duration')}:</span> {eventDetails.duration} {t('builder.step3.hours')}</p>
+                <p><span className="text-white font-semibold">{t('builder.step4.guests')}:</span> {eventDetails.guestCount}</p>
+                <p><span className="text-white font-semibold">{t('builder.step3.venue')}:</span> {eventDetails.venue || t('builder.step4.notSpecified')}</p>
               </div>
             </div>
 
             <div>
-              <h4 className="text-neon-pink font-semibold mb-4">Selected Games ({selectedGames.length})</h4>
+              <h4 className="text-neon-pink font-semibold mb-4">{t('builder.step4.selectedGames')} ({selectedGames.length})</h4>
               <div className="space-y-2 max-h-48 overflow-y-auto">
                 {selectedGames.length > 0 ? (
                   selectedGames.map(game => (
                     <p key={game.id} className="text-gray-300 flex items-center gap-2">
                       <Check className="w-4 h-4 text-neon-cyan" />
-                      {game.name}
+                      {t(`games.gamesList.${game.id}.name`)}
                     </p>
                   ))
                 ) : (
-                  <p className="text-gray-500 italic">No games selected</p>
+                  <p className="text-gray-500 italic">{t('builder.step4.noGamesSelected')}</p>
                 )}
               </div>
             </div>
@@ -435,13 +450,13 @@ const Step4Summary = ({ selectedGames, eventDetails, scrollToContact }) => {
           {/* Estimated Price */}
           <div className="border-t border-white/10 pt-6">
             <div className="flex justify-between items-center mb-4">
-              <span className="text-xl text-white font-semibold">Estimated Price:</span>
+              <span className="text-xl text-white font-semibold">{t('builder.step4.estimatedPrice')}</span>
               <span className="text-3xl font-bold neon-text-pink">
                 {formatPrice(estimate)}
               </span>
             </div>
             <p className="text-sm text-gray-400 text-center">
-              *Final pricing will be provided in your custom quote
+              {t('builder.step4.finalPricing')}
             </p>
           </div>
 
@@ -453,7 +468,7 @@ const Step4Summary = ({ selectedGames, eventDetails, scrollToContact }) => {
               className="w-full"
               onClick={scrollToContact}
             >
-              Request Your Custom Quote
+              {t('builder.step4.requestQuote')}
             </Button>
           </div>
         </div>

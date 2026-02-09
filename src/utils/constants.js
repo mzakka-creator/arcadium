@@ -69,48 +69,6 @@ export const GAMES = [
     },
     tags: ["Racing", "Family Friendly"],
     popular: true
-  },
-  {
-    id: 6,
-    name: "Beat Saber VR",
-    category: "vr",
-    description: "Slice beats in this rhythm VR masterpiece",
-    image: "/images/games/beatsaber.jpg",
-    specs: {
-      players: "1",
-      space: "6ft x 6ft",
-      power: "Standard outlet"
-    },
-    tags: ["VR", "Music", "Active"],
-    popular: true
-  },
-  {
-    id: 7,
-    name: "Air Hockey Table",
-    category: "modern",
-    description: "Fast-paced competitive air hockey action",
-    image: "/images/games/airhockey.jpg",
-    specs: {
-      players: "2",
-      space: "7ft x 4ft",
-      power: "Standard outlet"
-    },
-    tags: ["Competitive", "Classic"],
-    popular: false
-  },
-  {
-    id: 8,
-    name: "NBA Jam",
-    category: "retro",
-    description: "Boomshakalaka! The ultimate arcade basketball game",
-    image: "/images/games/nbajam.jpg",
-    specs: {
-      players: "1-4",
-      space: "3ft x 3ft",
-      power: "Standard outlet"
-    },
-    tags: ["Sports", "Multiplayer"],
-    popular: false
   }
 ];
 
@@ -306,9 +264,9 @@ export const SPACE_LAYOUTS = [
 
 // Contact Information
 export const CONTACT_INFO = {
-  phone: "+1-210-555-0199",
+  phone: "+966 53 525 0707",
   email: "hello@arcadiumsa.com",
-  whatsapp: "+12105550199",
+  whatsapp: "+966535250707",
   instagram: "@arcadiumsa",
   facebook: "ArcadiumSA",
   hours: "Mon-Sun: 9AM - 10PM",

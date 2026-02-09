@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { EventProvider } from './context/EventContext';
+import './i18n/config'; // Initialize i18n
 import './App.css';
+import logoImage from './assets/logo.png';
 
 // Import all components
 import AppBar from './components/AppBar/AppBar';
@@ -19,9 +22,10 @@ import Footer from './components/Footer/Footer';
 import { WhatsAppFloat, ScrollToTop } from './components/FloatingElements';
 
 /**
- * Main App Component
+ * Main App Component - Wrapped in LanguageAwareApp to use translations
  */
 function App() {
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);
 
@@ -51,9 +55,13 @@ function App() {
             style={{ opacity: isLoading ? 1 : 0 }}
           >
             <div className="text-center">
-              <h1 className="font-heading text-6xl md:text-8xl font-bold neon-text-pink tracking-wider mb-8 animate-glow-pulse">
-                ARCADIUM
-              </h1>
+              <div className="mb-8 animate-glow-pulse">
+                <img 
+                  src={logoImage} 
+                  alt="Arcadium Logo" 
+                  className="h-24 md:h-32 w-auto object-contain mx-auto"
+                />
+              </div>
               
               <div className="w-80 h-1 bg-white/10 rounded-full overflow-hidden mb-4 mx-auto">
                 <div 
@@ -63,7 +71,7 @@ function App() {
               </div>
               
               <p className="text-gray-400 font-body tracking-wider text-center">
-                Loading... {loadingProgress}%
+                {t('app.loading')} {loadingProgress}%
               </p>
               
               <div className="mt-8 flex justify-center">

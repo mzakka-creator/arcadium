@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Gamepad2 } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import Button from '../shared/Button';
+import LanguageSwitcher from '../LanguageSwitcher';
+import logoImage from '../../assets/logo.png';
 
 /**
  * AppBar Component - Sticky navigation with mobile menu
  */
 const AppBar = () => {
+  const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY, isScrolled } = useScrollAnimation(50);
 
@@ -44,12 +48,12 @@ const AppBar = () => {
   };
 
   const navLinks = [
-    { label: 'About', target: 'about' },
-    { label: 'Games', target: 'games' },
-    { label: 'Build', target: 'builder' },
-    { label: 'How It Works', target: 'how-it-works' },
-    { label: 'Gallery', target: 'gallery' },
-    { label: 'Reviews', target: 'testimonials' },
+    { label: t('nav.about'), target: 'about' },
+    { label: t('nav.games'), target: 'games' },
+    { label: t('nav.build'), target: 'builder' },
+    { label: t('nav.howItWorks'), target: 'how-it-works' },
+    { label: t('nav.gallery'), target: 'gallery' },
+    { label: t('nav.reviews'), target: 'testimonials' },
   ];
 
   return (
@@ -69,14 +73,15 @@ const AppBar = () => {
             {/* Logo */}
             <motion.button
               onClick={scrollToTop}
-              className="flex items-center gap-2 group cursor-pointer"
+              className="flex items-center group cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Gamepad2 className="w-8 h-8 text-neon-cyan group-hover:text-neon-pink transition-colors" />
-              <span className="font-heading text-2xl font-bold neon-text-pink group-hover:neon-text-cyan transition-all">
-                ARCADIUM
-              </span>
+              <img 
+                src={logoImage} 
+                alt="Arcadium Logo" 
+                className="h-10 md:h-12 w-auto object-contain"
+              />
             </motion.button>
 
             {/* Desktop Navigation */}
@@ -96,14 +101,15 @@ const AppBar = () => {
               ))}
             </div>
 
-            {/* Desktop CTA */}
-            <div className="hidden lg:block">
+            {/* Language Switcher & Desktop CTA */}
+            <div className="hidden lg:flex items-center gap-4">
+              <LanguageSwitcher />
               <Button
                 variant="primary"
                 size="sm"
                 onClick={() => scrollToSection('contact')}
               >
-                Get Quote
+                {t('nav.getQuote')}
               </Button>
             </div>
 
@@ -147,11 +153,12 @@ const AppBar = () => {
             >
               {/* Mobile Menu Header */}
               <div className="flex items-center justify-between p-6 border-b border-white/10">
-                <div className="flex items-center gap-2">
-                  <Gamepad2 className="w-6 h-6 text-neon-cyan" />
-                  <span className="font-heading text-xl font-bold neon-text-pink">
-                    ARCADIUM
-                  </span>
+                <div className="flex items-center">
+                  <img 
+                    src={logoImage} 
+                    alt="Arcadium Logo" 
+                    className="h-8 w-auto object-contain"
+                  />
                 </div>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -178,21 +185,26 @@ const AppBar = () => {
                 ))}
               </div>
 
-              {/* Mobile CTA */}
+              {/* Mobile Language Switcher */}
               <div className="p-6 border-t border-white/10">
+                <LanguageSwitcher />
+              </div>
+
+              {/* Mobile CTA */}
+              <div className="px-6 pb-6">
                 <Button
                   variant="primary"
                   size="lg"
                   className="w-full"
                   onClick={() => scrollToSection('contact')}
                 >
-                  Get Quote
+                  {t('nav.getQuote')}
                 </Button>
               </div>
 
               {/* Mobile Menu Footer */}
-              <div className="p-6 text-center text-gray-400 text-sm">
-                <p>Level Up Your Event</p>
+              <div className="p-6 text-center text-gray-400 text-sm border-t border-white/10">
+                <p>{t('app.tagline')}</p>
                 <p className="text-neon-cyan mt-2">🎮 San Antonio, TX</p>
               </div>
             </motion.div>
