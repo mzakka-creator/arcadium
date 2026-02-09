@@ -265,7 +265,7 @@ export const SPACE_LAYOUTS = [
 // Contact Information
 export const CONTACT_INFO = {
   phone: "+966 53 525 0707",
-  email: "hello@arcadiumsa.com",
+  email: "arcadiumsa@gmail.com",
   whatsapp: "+966535250707",
   instagram: "@arcadiumsa",
   facebook: "ArcadiumSA",
