@@ -1,0 +1,27 @@
+/* Hero Component Styles */
+.hero-section {
+  position: relative;
+  background: linear-gradient(135deg, #0A0E27 0%, #0A0A0F 100%);
+}
+
+/* Additional custom animations for hero */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+/* Responsive text sizing */
+@media (max-width: 640px) {
+  .hero-section h1 {
+    font-size: 3.5rem;
+  }
+}
+

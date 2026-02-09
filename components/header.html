@@ -1,0 +1,32 @@
+<!-- Sticky Header -->
+<header id="header" class="header">
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">ARCADIUM</div>
+            <nav class="nav">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#games">Games</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="btn btn-primary btn-small" onclick="scrollToContact()">Book Now</button>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="mobile-menu">
+    <a href="#hero" onclick="toggleMobileMenu()">Home</a>
+    <a href="#about" onclick="toggleMobileMenu()">About</a>
+    <a href="#games" onclick="toggleMobileMenu()">Games</a>
+    <a href="#gallery" onclick="toggleMobileMenu()">Gallery</a>
+    <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+    <button class="btn btn-primary" onclick="scrollToContact(); toggleMobileMenu()">Book Now</button>
+</div>
+

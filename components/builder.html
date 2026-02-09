@@ -1,0 +1,164 @@
+<!-- Section 4: Build Your Arcade -->
+<section id="builder" class="builder">
+    <div class="container">
+        <h2 class="section-title center">Build Your Arcade</h2>
+        <p class="section-subtitle">Create your perfect gaming experience in 4 easy steps</p>
+        
+        <div class="builder-container">
+            <div class="builder-steps">
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Event Type</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Select Games</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Duration</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Review</div>
+                </div>
+            </div>
+
+            <div class="builder-content">
+                <!-- Step 1: Event Type -->
+                <div class="builder-pane active" data-pane="1">
+                    <h3>What type of event are you planning?</h3>
+                    <div class="event-types">
+                        <button class="event-type-btn" onclick="selectEventType('birthday')">
+                            <span class="event-icon">🎂</span>
+                            <span class="event-name">Birthday Party</span>
+                        </button>
+                        <button class="event-type-btn" onclick="selectEventType('corporate')">
+                            <span class="event-icon">💼</span>
+                            <span class="event-name">Corporate Event</span>
+                        </button>
+                        <button class="event-type-btn" onclick="selectEventType('wedding')">
+                            <span class="event-icon">💒</span>
+                            <span class="event-name">Wedding</span>
+                        </button>
+                        <button class="event-type-btn" onclick="selectEventType('school')">
+                            <span class="event-icon">🎓</span>
+                            <span class="event-name">School Event</span>
+                        </button>
+                        <button class="event-type-btn" onclick="selectEventType('other')">
+                            <span class="event-icon">🎉</span>
+                            <span class="event-name">Other</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Select Games -->
+                <div class="builder-pane" data-pane="2">
+                    <h3>Choose your games</h3>
+                    <div class="game-selector">
+                        <div class="game-select-item">
+                            <input type="checkbox" id="game1" value="Pac-Man">
+                            <label for="game1">
+                                <span class="game-thumb">🕹️</span>
+                                <span>Pac-Man</span>
+                            </label>
+                        </div>
+                        <div class="game-select-item">
+                            <input type="checkbox" id="game2" value="Street Fighter">
+                            <label for="game2">
+                                <span class="game-thumb">🥊</span>
+                                <span>Street Fighter</span>
+                            </label>
+                        </div>
+                        <div class="game-select-item">
+                            <input type="checkbox" id="game3" value="PS5">
+                            <label for="game3">
+                                <span class="game-thumb">🎮</span>
+                                <span>PlayStation 5</span>
+                            </label>
+                        </div>
+                        <div class="game-select-item">
+                            <input type="checkbox" id="game4" value="VR">
+                            <label for="game4">
+                                <span class="game-thumb">🥽</span>
+                                <span>VR Experience</span>
+                            </label>
+                        </div>
+                        <div class="game-select-item">
+                            <input type="checkbox" id="game5" value="Racing">
+                            <label for="game5">
+                                <span class="game-thumb">🏎️</span>
+                                <span>Racing Sim</span>
+                            </label>
+                        </div>
+                        <div class="game-select-item">
+                            <input type="checkbox" id="game6" value="Photo Booth">
+                            <label for="game6">
+                                <span class="game-thumb">📸</span>
+                                <span>Photo Booth</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="builder-actions">
+                        <button class="btn btn-secondary" onclick="prevBuilderStep()">Back</button>
+                        <button class="btn btn-primary" onclick="nextBuilderStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Duration & Guests -->
+                <div class="builder-pane" data-pane="3">
+                    <h3>Event Details</h3>
+                    <div class="form-group">
+                        <label>Duration (hours)</label>
+                        <input type="range" id="duration" min="2" max="8" value="4" oninput="updateDuration(this.value)">
+                        <div class="range-value"><span id="durationValue">4</span> hours</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Guests</label>
+                        <input type="number" id="guests" min="10" max="500" value="50" placeholder="Enter number of guests">
+                    </div>
+                    <div class="builder-actions">
+                        <button class="btn btn-secondary" onclick="prevBuilderStep()">Back</button>
+                        <button class="btn btn-primary" onclick="nextBuilderStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Review & Quote -->
+                <div class="builder-pane" data-pane="4">
+                    <h3>Your Arcade Setup</h3>
+                    <div class="builder-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">Event Type:</span>
+                            <span class="summary-value" id="summaryEventType">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Games Selected:</span>
+                            <span class="summary-value" id="summaryGames">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Duration:</span>
+                            <span class="summary-value" id="summaryDuration">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Guests:</span>
+                            <span class="summary-value" id="summaryGuests">-</span>
+                        </div>
+                    </div>
+                    <div class="estimate-box">
+                        <div class="estimate-label">Estimated Starting Price:</div>
+                        <div class="estimate-price" id="estimatePrice">$599</div>
+                        <p class="estimate-note">*Final price depends on location, date, and specific requirements</p>
+                    </div>
+                    <div class="builder-actions">
+                        <button class="btn btn-secondary" onclick="prevBuilderStep()">Back</button>
+                        <button class="btn btn-primary" onclick="requestQuote()">Request Detailed Quote</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

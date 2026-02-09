@@ -1,70 +1,197 @@
-# Getting Started with Create React App
+# 🎮 Arcadium - Event Arcade Rental Landing Page
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, vibrant React landing page for Arcadium, featuring retro-futuristic arcade aesthetics with neon colors, smooth animations, and interactive components.
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+- 🎨 **Retro-Futuristic Design**: Neon colors, glowing effects, and 80s/90s arcade vibes
+- ⚡ **Smooth Animations**: Framer Motion for scroll animations and micro-interactions
+- 📱 **Fully Responsive**: Mobile-first design that looks great on all devices
+- 🎯 **Interactive Components**:
+  - Multi-step event builder with live quote calculator
+  - Tabbed game showcase with category filtering
+  - Image gallery with lightbox
+  - Testimonial carousel
+  - Contact form with validation
+- 🚀 **Performance Optimized**: Lazy loading, intersection observers, and code splitting
+- ♿ **Accessible**: WCAG AA compliant with keyboard navigation and ARIA labels
+- 🎭 **Context API**: State management for cross-component data
 
-### `npm start`
+## 🛠️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Framework**: React 18+
+- **Styling**: Tailwind CSS + Custom CSS
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Form Handling**: Custom hooks with validation
+- **State Management**: React Context API
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📦 Installation
 
-### `npm test`
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/arcadium.git
+   cd arcadium
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-### `npm run build`
+3. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🎨 Customization
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Colors
 
-### `npm run eject`
+Edit `tailwind.config.js` to customize the neon color palette:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```javascript
+colors: {
+  'neon-pink': '#FF006E',
+  'neon-cyan': '#00F5FF',
+  'neon-purple': '#8B00FF',
+  // ... more colors
+}
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Content
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Update data in `src/utils/constants.js`:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- `GAMES` - Game collection data
+- `PACKAGES` - Pricing tier information
+- `TESTIMONIALS` - Customer reviews
+- `CONTACT_INFO` - Business contact details
 
-## Learn More
+### Forms
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To enable form submissions:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **EmailJS Integration** (Recommended for quick setup):
+   ```bash
+   npm install @emailjs/browser
+   ```
+   
+   Update `src/components/Contact/Contact.jsx` with your EmailJS credentials.
 
-### Code Splitting
+2. **Or use Formspree**:
+   Replace the form submission endpoint in the Contact component.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📁 Project Structure
 
-### Analyzing the Bundle Size
+```
+src/
+├── components/
+│   ├── Hero/                 # Landing hero section
+│   ├── About/                # About section
+│   ├── GamesShowcase/        # Game catalog with tabs
+│   ├── BuildYourArcade/      # Multi-step form builder
+│   ├── HowItWorks/           # Process timeline
+│   ├── Gallery/              # Photo gallery
+│   ├── Testimonials/         # Customer reviews carousel
+│   ├── Contact/              # Contact form
+│   ├── Footer/               # Footer component
+│   ├── FloatingElements/     # WhatsApp & Scroll to Top
+│   └── shared/               # Reusable components
+├── context/
+│   └── EventContext.js       # Global state management
+├── hooks/
+│   ├── useIntersectionObserver.js
+│   ├── useScrollAnimation.js
+│   └── useForm.js
+├── utils/
+│   ├── constants.js          # Static data
+│   └── helpers.js            # Utility functions
+└── App.js                    # Main app component
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🎯 Key Components
 
-### Making a Progressive Web App
+### Hero
+Full-screen landing section with animated logo, CTAs, and floating particles.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### GamesShowcase
+Tabbed game browser with category filters and add-to-event functionality.
 
-### Advanced Configuration
+### BuildYourArcade
+4-step wizard for customizing event packages:
+1. Select event type
+2. Choose games
+3. Enter event details
+4. View summary and estimate
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Contact
+Contact form with validation, WhatsApp integration, and contact information display.
 
-### Deployment
+## 🌐 Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Vercel (Recommended)
+```bash
+npm install -g vercel
+vercel
+```
 
-### `npm run build` fails to minify
+### Netlify
+```bash
+npm run build
+# Drag and drop the 'build' folder to Netlify
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### GitHub Pages
+```bash
+npm install gh-pages --save-dev
+# Add to package.json:
+# "homepage": "https://yourusername.github.io/arcadium"
+# "predeploy": "npm run build"
+# "deploy": "gh-pages -d build"
+npm run deploy
+```
+
+## 📱 Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## ♿ Accessibility
+
+- Semantic HTML5 elements
+- ARIA labels and roles
+- Keyboard navigation support
+- Focus visible states
+- Color contrast compliance (WCAG AA)
+- Reduced motion support
+
+## 📄 License
+
+MIT License - feel free to use this project for your own business!
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📞 Support
+
+For questions or issues, please open an issue on GitHub or contact us at hello@arcadiumsa.com.
+
+## 🎉 Acknowledgments
+
+- Design inspiration from retro arcade aesthetics
+- Framer Motion for amazing animation capabilities
+- Tailwind CSS for rapid UI development
+
+---
+
+**Made with ❤️ for gamers everywhere** 🎮✨

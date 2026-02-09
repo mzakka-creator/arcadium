@@ -1,0 +1,210 @@
+<!-- Section 3: Games & Services -->
+<section id="games" class="games">
+    <div class="container">
+        <h2 class="section-title center">Choose Your Arcade Experience</h2>
+        
+        <!-- Game Categories Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('retro')">Retro Arcade</button>
+            <button class="tab-btn" onclick="switchTab('modern')">Modern Gaming</button>
+            <button class="tab-btn" onclick="switchTab('vr')">VR Experiences</button>
+            <button class="tab-btn" onclick="switchTab('racing')">Racing Simulators</button>
+            <button class="tab-btn" onclick="switchTab('photo')">Photo Booth</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <div id="retro" class="tab-pane active">
+                <div class="games-grid">
+                    <div class="game-card">
+                        <div class="game-image">🕹️</div>
+                        <h3>Pac-Man Deluxe</h3>
+                        <p>The classic maze chase that started it all</p>
+                        <div class="game-specs">
+                            <span>👥 1-2 Players</span>
+                            <span>📏 3x3 ft</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="addToEvent('Pac-Man')">Add to Event</button>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image">🥊</div>
+                        <h3>Street Fighter II</h3>
+                        <p>Legendary fighting game action</p>
+                        <div class="game-specs">
+                            <span>👥 1-2 Players</span>
+                            <span>📏 3x3 ft</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="addToEvent('Street Fighter II')">Add to Event</button>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image">👾</div>
+                        <h3>Space Invaders</h3>
+                        <p>Defend Earth from alien invaders</p>
+                        <div class="game-specs">
+                            <span>👥 1-2 Players</span>
+                            <span>📏 2x3 ft</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="addToEvent('Space Invaders')">Add to Event</button>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image">🎯</div>
+                        <h3>Galaga</h3>
+                        <p>Epic space shooting action</p>
+                        <div class="game-specs">
+                            <span>👥 1-2 Players</span>
+                            <span>📏 2x3 ft</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="addToEvent('Galaga')">Add to Event</button>
+                    </div>
+                </div>
+            </div>
+            <div id="modern" class="tab-pane">
+                <div class="games-grid">
+                    <div class="game-card">
+                        <div class="game-image">🎮</div>
+                        <h3>PlayStation 5</h3>
+                        <p>Latest generation console gaming</p>
+                        <div class="game-specs">
+                            <span>👥 1-4 Players</span>
+                            <span>📏 4x6 ft</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="addToEvent('PS5')">Add to Event</button>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image">🎯</div>
+                        <h3>Xbox Series X</h3>
+                        <p>Powerful gaming with Game Pass library</p>
+                        <div class="game-specs">
+                            <span>👥 1-4 Players</span>
+                            <span>📏 4x6 ft</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="addToEvent('Xbox Series X')">Add to Event</button>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image">🌟</div>
+                        <h3>Nintendo Switch</h3>
+                        <p>Family-friendly party games</p>
+                        <div class="game-specs">
+                            <span>👥 1-4 Players</span>
+                            <span>📏 4x6 ft</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="addToEvent('Nintendo Switch')">Add to Event</button>
+                    </div>
+                </div>
+            </div>
+            <div id="vr" class="tab-pane">
+                <div class="games-grid">
+                    <div class="game-card">
+                        <div class="game-image">🥽</div>
+                        <h3>Meta Quest 3</h3>
+                        <p>Immersive virtual reality experiences</p>
+                        <div class="game-specs">
+                            <span>👥 1 Player</span>
+                            <span>📏 6x6 ft</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="addToEvent('Meta Quest 3')">Add to Event</button>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image">🎪</div>
+                        <h3>VR Adventure Pack</h3>
+                        <p>Multiple VR stations for group play</p>
+                        <div class="game-specs">
+                            <span>👥 1-4 Players</span>
+                            <span>📏 10x10 ft</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="addToEvent('VR Adventure Pack')">Add to Event</button>
+                    </div>
+                </div>
+            </div>
+            <div id="racing" class="tab-pane">
+                <div class="games-grid">
+                    <div class="game-card">
+                        <div class="game-image">🏎️</div>
+                        <h3>Racing Simulator Pro</h3>
+                        <p>Professional racing wheel setup</p>
+                        <div class="game-specs">
+                            <span>👥 1 Player</span>
+                            <span>📏 5x6 ft</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="addToEvent('Racing Sim')">Add to Event</button>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image">🏁</div>
+                        <h3>Multi-Racing Station</h3>
+                        <p>4-player competitive racing</p>
+                        <div class="game-specs">
+                            <span>👥 1-4 Players</span>
+                            <span>📏 12x8 ft</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="addToEvent('Multi-Racing')">Add to Event</button>
+                    </div>
+                </div>
+            </div>
+            <div id="photo" class="tab-pane">
+                <div class="games-grid">
+                    <div class="game-card">
+                        <div class="game-image">📸</div>
+                        <h3>Digital Photo Booth</h3>
+                        <p>Instant digital photos with custom filters</p>
+                        <div class="game-specs">
+                            <span>👥 1-8 Players</span>
+                            <span>📏 6x6 ft</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="addToEvent('Photo Booth')">Add to Event</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Package Tiers -->
+        <div class="packages">
+            <h2 class="section-title center">Popular Packages</h2>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Starter Pack</h3>
+                        <div class="package-price">From $299</div>
+                    </div>
+                    <div class="package-features">
+                        <div class="feature">✓ 3-4 Games</div>
+                        <div class="feature">✓ 2-4 Hours</div>
+                        <div class="feature">✓ Up to 30 Guests</div>
+                        <div class="feature">✓ Setup & Breakdown</div>
+                        <div class="feature">✓ Perfect for Small Parties</div>
+                    </div>
+                    <button class="btn btn-primary" onclick="selectPackage('starter')">Get Custom Quote</button>
+                </div>
+                <div class="package-card featured">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <div class="package-header">
+                        <h3>Party Pack</h3>
+                        <div class="package-price">From $599</div>
+                    </div>
+                    <div class="package-features">
+                        <div class="feature">✓ 6-8 Games</div>
+                        <div class="feature">✓ 4-6 Hours</div>
+                        <div class="feature">✓ Up to 75 Guests</div>
+                        <div class="feature">✓ Setup & Breakdown</div>
+                        <div class="feature">✓ Ideal for Medium Events</div>
+                    </div>
+                    <button class="btn btn-primary" onclick="selectPackage('party')">Get Custom Quote</button>
+                </div>
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Ultimate Experience</h3>
+                        <div class="package-price">From $999</div>
+                    </div>
+                    <div class="package-features">
+                        <div class="feature">✓ 10+ Games</div>
+                        <div class="feature">✓ 6-8 Hours</div>
+                        <div class="feature">✓ Unlimited Guests</div>
+                        <div class="feature">✓ Setup & Breakdown</div>
+                        <div class="feature">✓ Full Arcade Experience</div>
+                    </div>
+                    <button class="btn btn-primary" onclick="selectPackage('ultimate')">Get Custom Quote</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
