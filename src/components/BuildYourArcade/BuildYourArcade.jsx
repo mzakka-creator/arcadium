@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Cake, Briefcase, Heart, GraduationCap, DollarSign, Star,
-  ChevronLeft, ChevronRight, Check, Calendar, Users as UsersIcon
+  ChevronLeft, ChevronRight, Check, Calendar
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { SectionHeader, Button, Card } from '../shared';
 import { useEvent } from '../../context/EventContext';
 import { EVENT_TYPES, GAMES } from '../../utils/constants';
-import { calculateEstimate, formatPrice } from '../../utils/helpers';
+import { CONTACT_INFO } from '../../utils/constants';
+import { generateWhatsAppLink } from '../../utils/helpers';
 
 /**
  * BuildYourArcade Component - Multi-step event builder
@@ -28,10 +29,30 @@ const BuildYourArcade = () => {
   const totalSteps = 4;
 
   const handleNext = () => {
+    // Validate step 1: require event type
+    if (currentStep === 1 && !eventDetails.eventType) {
+      return; // Don't proceed if no event type selected
+    }
+    
+    // Validate step 2: require at least 2 games
+    if (currentStep === 2 && selectedGames.length < 2) {
+      return; // Don't proceed if less than 2 games selected
+    }
+    
+    // Validate step 3: require venue
+    if (currentStep === 3 && !eventDetails.venue) {
+      return; // Don't proceed if venue is not filled
+    }
+    
     if (currentStep < totalSteps) {
       setCurrentStep(prev => prev + 1);
     }
   };
+  
+  const canProceed = (currentStep === 1 && eventDetails.eventType) || 
+                     (currentStep === 2 && selectedGames.length >= 2) ||
+                     (currentStep === 3 && eventDetails.venue) ||
+                     (currentStep !== 1 && currentStep !== 2 && currentStep !== 3);
 
   const handlePrev = () => {
     if (currentStep > 1) {
@@ -51,7 +72,7 @@ const BuildYourArcade = () => {
       {/* Background */}
       <div className="absolute inset-0 grid-background opacity-10"></div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 overflow-visible">
         <SectionHeader
           title={t('builder.title')}
           subtitle={t('builder.subtitle')}
@@ -62,7 +83,7 @@ const BuildYourArcade = () => {
         <StepIndicator currentStep={currentStep} totalSteps={totalSteps} />
 
         {/* Step Content */}
-        <div className="mt-12">
+        <div className="mt-12 overflow-visible -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
           <AnimatePresence mode="wait">
             {currentStep === 1 && (
               <Step1EventType 
@@ -113,25 +134,16 @@ const BuildYourArcade = () => {
             {t('builder.stepOf', { current: currentStep, total: totalSteps })}
           </div>
 
-          {currentStep < totalSteps ? (
+          {currentStep < totalSteps && (
             <Button
               variant="primary"
               onClick={handleNext}
+              disabled={!canProceed}
               icon={isRTL ? <ChevronLeft /> : <ChevronRight />}
               iconPosition={isRTL ? "left" : "right"}
               className="w-full sm:w-auto order-3"
             >
               {t('builder.nextStep')}
-            </Button>
-          ) : (
-            <Button
-              variant="primary"
-              onClick={scrollToContact}
-              icon={<Check />}
-              iconPosition={isRTL ? "left" : "right"}
-              className="w-full sm:w-auto order-3"
-            >
-              {t('builder.getQuote')}
             </Button>
           )}
         </div>
@@ -214,11 +226,17 @@ const Step1EventType = ({ eventDetails, updateEventDetails }) => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
       transition={{ duration: 0.3 }}
+      className="overflow-visible"
     >
-      <h3 className="text-2xl font-bold text-center text-white mb-8">
+      <h3 className="text-2xl font-bold text-center text-white mb-4">
         {t('builder.step1.title')}
       </h3>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {!eventDetails.eventType && (
+        <p className="text-center text-neon-pink mb-6 text-sm font-semibold">
+          {t('builder.step1.required')}
+        </p>
+      )}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 p-6">
         {EVENT_TYPES.map((type) => (
           <motion.button
             key={type.id}
@@ -230,8 +248,8 @@ const Step1EventType = ({ eventDetails, updateEventDetails }) => {
                 : 'border-white/10 bg-white/5 hover:border-neon-cyan hover:bg-neon-cyan/5'
               }
             `}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
           >
             <div className={`
               mb-3 flex justify-center
@@ -262,15 +280,21 @@ const Step2GameSelection = ({ selectedGames, toggleGame }) => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
       transition={{ duration: 0.3 }}
+      className="overflow-visible"
     >
       <h3 className="text-2xl font-bold text-center text-white mb-4">
         {t('builder.step2.title')}
       </h3>
-      <p className="text-center text-gray-400 mb-8">
+      <p className="text-center text-gray-400 mb-2">
         {t('builder.step2.gamesSelected', { count: selectedGames.length })}
       </p>
+      {selectedGames.length < 2 && (
+        <p className="text-center text-neon-pink mb-6 text-sm font-semibold">
+          {t('builder.step2.minimumGames')}
+        </p>
+      )}
       
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[500px] overflow-y-auto pr-2">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[500px] overflow-y-auto p-6">
         {GAMES.map((game) => {
           const isSelected = selectedGames.some(g => g.id === game.id);
           return (
@@ -359,23 +383,6 @@ const Step3EventDetails = ({ eventDetails, updateEventDetails }) => {
             </div>
           </div>
 
-          {/* Guest Count */}
-          <div>
-            <label className="block text-white font-semibold mb-2 flex items-center gap-2">
-              <UsersIcon className="w-5 h-5 text-neon-cyan" />
-              {t('builder.step3.expectedGuests')}
-            </label>
-            <input
-              type="number"
-              min="10"
-              max="500"
-              value={eventDetails.guestCount}
-              onChange={(e) => updateEventDetails({ guestCount: parseInt(e.target.value) })}
-              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:border-neon-cyan focus:outline-none"
-              placeholder="e.g., 50"
-            />
-          </div>
-
           {/* Venue */}
           <div>
             <label className="block text-white font-semibold mb-2">
@@ -388,6 +395,11 @@ const Step3EventDetails = ({ eventDetails, updateEventDetails }) => {
               className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:border-neon-cyan focus:outline-none"
               placeholder={t('builder.step3.venuePlaceholder')}
             />
+            {!eventDetails.venue && (
+              <p className="text-neon-pink text-sm font-semibold mt-2">
+                {t('builder.step3.venueRequired')}
+              </p>
+            )}
           </div>
         </div>
       </Card>
@@ -400,11 +412,47 @@ const Step3EventDetails = ({ eventDetails, updateEventDetails }) => {
  */
 const Step4Summary = ({ selectedGames, eventDetails, scrollToContact }) => {
   const { t } = useTranslation();
-  const estimate = calculateEstimate(
-    selectedGames,
-    eventDetails.duration,
-    eventDetails.guestCount
-  );
+
+  // Generate detailed WhatsApp message with all event details
+  const whatsappMessage = useMemo(() => {
+    let message = t('contact.whatsapp.message') + '\n\n';
+    
+    // Event Type
+    if (eventDetails.eventType) {
+      message += `*${t('builder.step4.type')}:* ${t(`eventTypes.${eventDetails.eventType}`)}\n`;
+    }
+    
+    // Event Date
+    if (eventDetails.date) {
+      message += `*${t('builder.step4.date')}:* ${eventDetails.date}\n`;
+    }
+    
+    // Duration
+    if (eventDetails.duration) {
+      message += `*${t('builder.step4.duration')}:* ${eventDetails.duration} ${t('builder.step3.hours')}\n`;
+    }
+    
+    // Venue
+    if (eventDetails.venue) {
+      message += `*${t('builder.step3.venue')}:* ${eventDetails.venue}\n`;
+    }
+    
+    // Selected Games
+    if (selectedGames.length > 0) {
+      message += `\n*${t('builder.step4.selectedGames')}:*\n`;
+      selectedGames.forEach((game, index) => {
+        message += `${index + 1}. ${t(`games.gamesList.${game.id}.name`)}\n`;
+      });
+    }
+    
+    return message;
+  }, [selectedGames, eventDetails, t]);
+  
+  const whatsappLink = generateWhatsAppLink(CONTACT_INFO.whatsapp, whatsappMessage);
+
+  const handleWhatsAppClick = () => {
+    window.open(whatsappLink, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <motion.div
@@ -428,7 +476,6 @@ const Step4Summary = ({ selectedGames, eventDetails, scrollToContact }) => {
                 <p><span className="text-white font-semibold">{t('builder.step4.type')}:</span> {eventDetails.eventType ? t(`eventTypes.${eventDetails.eventType}`) : t('builder.step4.notSpecified')}</p>
                 <p><span className="text-white font-semibold">{t('builder.step4.date')}:</span> {eventDetails.date || t('builder.step4.notSpecified')}</p>
                 <p><span className="text-white font-semibold">{t('builder.step4.duration')}:</span> {eventDetails.duration} {t('builder.step3.hours')}</p>
-                <p><span className="text-white font-semibold">{t('builder.step4.guests')}:</span> {eventDetails.guestCount}</p>
                 <p><span className="text-white font-semibold">{t('builder.step3.venue')}:</span> {eventDetails.venue || t('builder.step4.notSpecified')}</p>
               </div>
             </div>
@@ -450,26 +497,13 @@ const Step4Summary = ({ selectedGames, eventDetails, scrollToContact }) => {
             </div>
           </div>
 
-          {/* Estimated Price */}
-          <div className="border-t border-white/10 pt-6">
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-xl text-white font-semibold">{t('builder.step4.estimatedPrice')}</span>
-              <span className="text-3xl font-bold neon-text-pink">
-                {formatPrice(estimate)}
-              </span>
-            </div>
-            <p className="text-sm text-gray-400 text-center">
-              {t('builder.step4.finalPricing')}
-            </p>
-          </div>
-
           {/* CTA */}
           <div className="mt-8">
             <Button
               variant="primary"
               size="lg"
               className="w-full"
-              onClick={scrollToContact}
+              onClick={handleWhatsAppClick}
             >
               {t('builder.step4.requestQuote')}
             </Button>

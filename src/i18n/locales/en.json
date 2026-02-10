@@ -17,7 +17,7 @@
     "title": "ARCADIUM",
     "tagline": "Take Your Event to the Next Level",
     "subtitle": "Mobile Arcade Game Rentals for Unforgettable Parties & Events",
-    "serviceArea": "Serving San Antonio & Surrounding Areas",
+    "serviceArea": "Serving Jeddah in SA and Surrounding Areas",
     "buildYourArcade": "Build Your Arcade",
     "browseGames": "Browse Games",
     "scrollToExplore": "Scroll to Explore",
@@ -93,49 +93,57 @@
     "getQuote": "Get Quote",
     "gamesList": {
       "1": {
-        "name": "Pac-Man Arcade Machine",
-        "description": "Classic 1980s arcade cabinet with authentic joystick controls",
-        "space": "2ft x 3ft",
+        "name": "Foosball (Table Soccer)",
+        "description": "A classic table soccer arcade game combining competition and fun. Perfect for group play at events and gatherings.",
+        "space": "4ft x 6ft",
         "tags": {
           "1": "Classic",
-          "2": "Family Friendly"
+          "2": "Competitive"
         }
       },
       "2": {
-        "name": "Street Fighter II",
-        "description": "The legendary fighting game that defined a generation",
-        "space": "2.5ft x 3ft",
+        "name": "Basketball Shooting",
+        "description": "A fast-paced basketball shooting game focused on speed and accuracy. Score as many points as possible before time runs out.",
+        "space": "4ft x 5ft",
         "tags": {
-          "1": "Fighting",
+          "1": "Sports",
           "2": "Competitive"
         }
       },
       "3": {
-        "name": "Dance Dance Revolution",
-        "description": "Get the party moving with this rhythm game phenomenon",
-        "space": "4ft x 6ft",
+        "name": "Boxing Machine",
+        "description": "Test your strength and reflexes in this interactive boxing machine. Punch hard and see your score instantly.",
+        "space": "3ft x 4ft",
         "tags": {
-          "1": "Dancing",
-          "2": "Party Game"
+          "1": "Sports",
+          "2": "Interactive"
         }
       },
       "4": {
-        "name": "VR Racing Simulator",
-        "description": "Immersive virtual reality racing experience",
-        "space": "6ft x 6ft",
+        "name": "Fun Darts",
+        "description": "A modern darts game that focuses on precision and control. Ideal for friendly competitions and casual challenges.",
+        "space": "3ft x 5ft",
         "tags": {
-          "1": "VR",
-          "2": "Racing",
-          "3": "Modern"
+          "1": "Precision",
+          "2": "Competitive"
         }
       },
       "5": {
-        "name": "Mario Kart Arcade",
-        "description": "Race with your favorite Nintendo characters",
-        "space": "4ft x 4ft",
+        "name": "Air Hockey",
+        "description": "A fast and energetic head-to-head game that tests speed and reflexes. Perfect for competitive matches.",
+        "space": "4ft x 7ft",
         "tags": {
-          "1": "Racing",
-          "2": "Family Friendly"
+          "1": "Fast-paced",
+          "2": "Competitive"
+        }
+      },
+      "6": {
+        "name": "Shuffleboard",
+        "description": "A stylish game focused on precision and control. Ideal for relaxed and elegant competitive play.",
+        "space": "3ft x 12ft",
+        "tags": {
+          "1": "Precision",
+          "2": "Elegant"
         }
       }
     }
@@ -154,12 +162,14 @@
       "summary": "Summary"
     },
     "step1": {
-      "title": "What type of event are you planning?"
+      "title": "What type of event are you planning?",
+      "required": "Please select an event type to continue"
     },
     "step2": {
       "title": "Select Your Games",
       "gamesSelected": "{{count}} game selected",
-      "gamesSelected_plural": "{{count}} games selected"
+      "gamesSelected_plural": "{{count}} games selected",
+      "minimumGames": "Please select at least 2 games to continue"
     },
     "step3": {
       "title": "Event Details",
@@ -168,7 +178,8 @@
       "hours": "hours",
       "expectedGuests": "Expected Guests",
       "venue": "Venue/Location",
-      "venuePlaceholder": "Enter venue address or name"
+      "venuePlaceholder": "Enter venue address or name",
+      "venueRequired": "Please enter a venue/location to continue"
     },
     "step4": {
       "title": "Your Event Summary",

@@ -94,6 +94,7 @@ const Contact = () => {
     validate
   );
 
+  // Use regular WhatsApp message
   const whatsappMessage = t('contact.whatsapp.message');
   const whatsappLink = generateWhatsAppLink(CONTACT_INFO.whatsapp, whatsappMessage);
 
@@ -229,29 +230,14 @@ const Contact = () => {
                         onChange={handleChange}
                         className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:border-neon-cyan focus:outline-none"
                       >
-                        <option value="">{t('contact.form.selectType')}</option>
-                        <option value="birthday">{t('eventTypes.birthday')}</option>
-                        <option value="corporate">{t('eventTypes.corporate')}</option>
-                        <option value="wedding">{t('eventTypes.wedding')}</option>
-                        <option value="school">{t('eventTypes.school')}</option>
-                        <option value="other">{t('eventTypes.other')}</option>
+                        <option value="" style={{ color: 'black' }}>{t('contact.form.selectType')}</option>
+                        <option value="birthday" style={{ color: 'black' }}>{t('eventTypes.birthday')}</option>
+                        <option value="corporate" style={{ color: 'black' }}>{t('eventTypes.corporate')}</option>
+                        <option value="wedding" style={{ color: 'black' }}>{t('eventTypes.wedding')}</option>
+                        <option value="school" style={{ color: 'black' }}>{t('eventTypes.school')}</option>
+                        <option value="other" style={{ color: 'black' }}>{t('eventTypes.other')}</option>
                       </select>
                     </div>
-                  </div>
-
-                  {/* Guest Count */}
-                  <div>
-                    <label className="block text-white font-semibold mb-2">
-                      {t('contact.form.expectedGuests')}
-                    </label>
-                    <input
-                      type="number"
-                      name="guestCount"
-                      value={values.guestCount}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:border-neon-cyan focus:outline-none"
-                      placeholder={t('contact.form.guestsPlaceholder')}
-                    />
                   </div>
 
                   {/* Message */}

@@ -23,7 +23,7 @@ export const formatPrice = (price) => {
 };
 
 // Calculate estimated price based on selections
-export const calculateEstimate = (selectedGames, duration, guestCount) => {
+export const calculateEstimate = (selectedGames, duration, guestCount = 0) => {
   const basePrice = 300;
   const pricePerGame = 75;
   const pricePerHour = 50;

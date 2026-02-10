@@ -2,72 +2,86 @@
 export const GAMES = [
   {
     id: 1,
-    name: "Pac-Man Arcade Machine",
+    name: "Foosball (Table Soccer)",
     category: "retro",
-    description: "Classic 1980s arcade cabinet with authentic joystick controls",
-    image: "/images/games/pacman.jpg",
+    description: "A classic table soccer arcade game combining competition and fun. Perfect for group play at events and gatherings.",
+    image: "/images/games/foosball.jpg",
     specs: {
-      players: "1-2",
-      space: "2ft x 3ft",
+      players: "2-4",
+      space: "4ft x 6ft",
       power: "Standard outlet"
     },
-    tags: ["Classic", "Family Friendly"],
+    tags: ["Classic", "Competitive"],
     popular: true
   },
   {
     id: 2,
-    name: "Street Fighter II",
-    category: "retro",
-    description: "The legendary fighting game that defined a generation",
-    image: "/images/games/streetfighter.jpg",
+    name: "Basketball Shooting",
+    category: "modern",
+    description: "A fast-paced basketball shooting game focused on speed and accuracy. Score as many points as possible before time runs out.",
+    image: "/images/games/basketball.jpg",
     specs: {
       players: "1-2",
-      space: "2.5ft x 3ft",
+      space: "4ft x 5ft",
       power: "Standard outlet"
     },
-    tags: ["Fighting", "Competitive"],
+    tags: ["Sports", "Competitive"],
     popular: true
   },
   {
     id: 3,
-    name: "Dance Dance Revolution",
+    name: "Boxing Machine",
     category: "modern",
-    description: "Get the party moving with this rhythm game phenomenon",
-    image: "/images/games/ddr.jpg",
+    description: "Test your strength and reflexes in this interactive boxing machine. Punch hard and see your score instantly.",
+    image: "/images/games/boxing.jpg",
     specs: {
-      players: "1-2",
-      space: "4ft x 6ft",
+      players: "1",
+      space: "3ft x 4ft",
       power: "Standard outlet"
     },
-    tags: ["Dancing", "Party Game"],
+    tags: ["Sports", "Interactive"],
     popular: true
   },
   {
     id: 4,
-    name: "VR Racing Simulator",
-    category: "vr",
-    description: "Immersive virtual reality racing experience",
-    image: "/images/games/vr-racing.jpg",
+    name: "Fun Darts",
+    category: "modern",
+    description: "A modern darts game that focuses on precision and control. Ideal for friendly competitions and casual challenges.",
+    image: "/images/games/darts.jpg",
     specs: {
-      players: "1",
-      space: "6ft x 6ft",
+      players: "1-4",
+      space: "3ft x 5ft",
       power: "Standard outlet"
     },
-    tags: ["VR", "Racing", "Modern"],
-    popular: false
+    tags: ["Precision", "Competitive"],
+    popular: true
   },
   {
     id: 5,
-    name: "Mario Kart Arcade",
-    category: "racing",
-    description: "Race with your favorite Nintendo characters",
-    image: "/images/games/mariokart.jpg",
+    name: "Air Hockey",
+    category: "modern",
+    description: "A fast and energetic head-to-head game that tests speed and reflexes. Perfect for competitive matches.",
+    image: "/images/games/airhockey.jpg",
     specs: {
-      players: "1-2",
-      space: "4ft x 4ft",
+      players: "2",
+      space: "4ft x 7ft",
       power: "Standard outlet"
     },
-    tags: ["Racing", "Family Friendly"],
+    tags: ["Fast-paced", "Competitive"],
+    popular: true
+  },
+  {
+    id: 6,
+    name: "Shuffleboard",
+    category: "modern",
+    description: "A stylish game focused on precision and control. Ideal for relaxed and elegant competitive play.",
+    image: "/images/games/shuffleboard.jpg",
+    specs: {
+      players: "2-4",
+      space: "3ft x 12ft",
+      power: "Standard outlet"
+    },
+    tags: ["Precision", "Elegant"],
     popular: true
   }
 ];
@@ -271,7 +285,7 @@ export const CONTACT_INFO = {
   facebook: "ArcadiumSA",
   hours: "Mon-Sun: 9AM - 10PM",
   location: "San Antonio, TX",
-  serviceArea: "San Antonio & surrounding areas (up to 50 miles)"
+  serviceArea: "Jeddah in SA and Surrounding Areas"
 };
 
 // Event Types

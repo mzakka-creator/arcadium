@@ -87,7 +87,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-body font-light text-white mb-6"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold neon-text-pink mb-6"
         >
           {t('hero.tagline')}
         </motion.h2>
